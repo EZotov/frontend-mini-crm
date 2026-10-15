@@ -1,8 +1,8 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     /* Type Checking */
     "strict": true,
+    "types": ["vite/client", "vite-plugin-svgr/client"],
 
     /* Modules */
     "module": "ESNext",
@@ -14,7 +14,6 @@
     },
 
     /* Emit */
-    "outDir": "build",
     "noEmit": true,
 
     /* Interop Constraints */
