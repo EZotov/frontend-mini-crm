@@ -1,26 +1,36 @@
 {
-  "compileOnSave": false,
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
+    /* Type Checking */
     "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
+
+    /* Modules */
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+
+    /* Emit */
+    "outDir": "build",
+    "noEmit": true,
+
+    /* Interop Constraints */
+    "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "ES2022",
-    "module": "preserve",
-    "baseUrl": "./",
-    "outDir": "./dist"
+    "forceConsistentCasingInFileNames": true,
+
+    /* Language and Environment */
+    "target": "ES2020",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "useDefineForClassFields": true,
+    "jsx": "react-jsx",
+
+    /* Completeness */
+    "skipLibCheck": true
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "src/**/*.spec.ts"],
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  }
+  "include": ["src"],
+  "references": [{"path": "./tsconfig.node.json"}]
 }

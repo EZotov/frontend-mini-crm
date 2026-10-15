@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    /* Modules */
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowSyntheticDefaultImports": true,
+
+    /* JavaScript Support */
+    "allowJs": true,
+
+    /* Projects */
+    "composite": true,
+
+    /* Completeness */
+    "skipLibCheck": true
+  },
+  "include": ["vite.config.ts"]
+}
