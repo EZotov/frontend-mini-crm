@@ -13,7 +13,7 @@ import {ApiAxiosError, ApiErrorResponse, ApiSuccessResponse} from '~/api/types';
 //     504: 'Время ожидания ответа от сервера истекло',
 // };
 
-type EffectCallback<TParams, TResponse> = (params: TParams) => Promise<ApiSuccessResponse<TResponse>>;
+export type EffectCallback<TParams, TResponse> = (params: TParams) => Promise<ApiSuccessResponse<TResponse>>;
 type EffectOptions = {
     disableErrorMessages?: boolean;
     message?: {
@@ -29,7 +29,7 @@ type EffectOptions = {
  *
  * @returns Возвращает исходный эффект с типизацией
  */
-export const createApiEffect = <TParams extends Record<string, unknown>, TResponse = unknown>(
+export const createApiEffect = <TParams = void, TResponse = unknown>(
     callback: EffectCallback<TParams, TResponse>,
     options?: EffectOptions,
 ) => {
