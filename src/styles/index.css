@@ -1,0 +1,29 @@
+body {
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    color: #1e1e1e;
+    background-color: #ebeff2;
+    min-width: 320px;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-y: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+ol,
+ul {
+    list-style: none;
+}
