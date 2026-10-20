@@ -1,6 +1,8 @@
 import type {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
 import axios, {isAxiosError} from 'axios';
 
+import {$accessToken} from '~/model';
+
 export type QueryParams = Record<string, unknown> | URLSearchParams | void;
 export type Headers = Record<string, string>;
 
@@ -59,7 +61,7 @@ export class CoreApiClient extends ApiClient {
         });
 
         this.client.interceptors.request.use((config) => {
-            const token = '' as string;
+            const token = $accessToken.getState();
 
             if (token && config.headers) {
                 config.headers.Authorization = `Bearer ${token}`;
