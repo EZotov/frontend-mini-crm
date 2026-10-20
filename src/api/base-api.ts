@@ -1,7 +1,28 @@
 import type {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
 import axios, {isAxiosError} from 'axios';
 
-import {$accessToken} from '~/model';
+import {$accessToken} from '~/pages/login/models/auth';
+
+import {ApiAxiosError, ApiSuccessResponse} from './types';
+
+export class ApiError extends Error {
+    public code: string | null = null;
+    public statusCode: number | null = null;
+    public method: string | null = null;
+
+    constructor(errorData: ApiAxiosError) {
+        super(errorData.message || 'API Error');
+
+        this.name = 'ApiError';
+        this.code = errorData.code;
+        this.statusCode = errorData.fromResponse?.status ?? null;
+        this.method = errorData.fromResponse?.method?.toUpperCase() ?? null;
+
+        Object.setPrototypeOf(this, ApiError.prototype);
+    }
+}
+
+////////////////////
 
 export type QueryParams = Record<string, unknown> | URLSearchParams | void;
 export type Headers = Record<string, string>;
@@ -16,31 +37,31 @@ export abstract class ApiClient {
         url: string,
         query?: TQuery,
         options?: RequestOptions<TQuery>,
-    ): Promise<TResponse>;
+    ): Promise<ApiSuccessResponse<TResponse>>;
 
     protected abstract post<TPayload, TResponse>(
         url: string,
         body: TPayload,
         options?: RequestOptions<QueryParams>,
-    ): Promise<TResponse>;
+    ): Promise<ApiSuccessResponse<TResponse>>;
 
     protected abstract put<TPayload, TResponse>(
         url: string,
         body: TPayload,
         options?: RequestOptions<QueryParams>,
-    ): Promise<TResponse>;
+    ): Promise<ApiSuccessResponse<TResponse>>;
 
     protected abstract patch<TPayload, TResponse>(
         url: string,
         body: TPayload,
         options?: RequestOptions<QueryParams>,
-    ): Promise<TResponse>;
+    ): Promise<ApiSuccessResponse<TResponse>>;
 
     protected abstract delete<TQuery extends QueryParams, TResponse>(
         url: string,
         query: TQuery,
         options?: RequestOptions<TQuery>,
-    ): Promise<TResponse>;
+    ): Promise<ApiSuccessResponse<TResponse>>;
 }
 
 export class CoreApiClient extends ApiClient {
@@ -71,15 +92,24 @@ export class CoreApiClient extends ApiClient {
         });
     }
 
-    private async request<T>(config: AxiosRequestConfig): Promise<T> {
+    private async request<T>(config: AxiosRequestConfig): Promise<ApiSuccessResponse<T>> {
         try {
-            const response: AxiosResponse<T> = await this.client({...this.instanceConfig, ...config});
+            const response: AxiosResponse<ApiSuccessResponse<T>> = await this.client({
+                ...this.instanceConfig,
+                ...config,
+            });
 
             return response.data;
         } catch (error: unknown) {
             if (isAxiosError(error)) {
                 if (error.response) {
-                    throw error.response.data;
+                    throw new ApiError({
+                        ...error.response.data,
+                        fromResponse: {
+                            method: error.response.config.method,
+                            status: error.response.status,
+                        },
+                    });
                 }
 
                 throw new Error(error.message, {cause: error});
@@ -96,7 +126,7 @@ export class CoreApiClient extends ApiClient {
         url: string,
         query?: TQuery,
         options?: RequestOptions<TQuery>,
-    ): Promise<TResponse> {
+    ): Promise<ApiSuccessResponse<TResponse>> {
         const mergedConfig: AxiosRequestConfig = {
             method: 'GET',
             url,
@@ -112,9 +142,9 @@ export class CoreApiClient extends ApiClient {
      */
     protected post<TPayload, TResponse = unknown>(
         url: string,
-        body: TPayload,
+        body?: TPayload,
         options?: RequestOptions<QueryParams>,
-    ): Promise<TResponse> {
+    ): Promise<ApiSuccessResponse<TResponse>> {
         const mergedConfig: AxiosRequestConfig = {
             method: 'POST',
             url,
@@ -131,9 +161,9 @@ export class CoreApiClient extends ApiClient {
      */
     protected put<TPayload, TResponse = unknown>(
         url: string,
-        body: TPayload,
+        body?: TPayload,
         options?: RequestOptions<QueryParams>,
-    ): Promise<TResponse> {
+    ): Promise<ApiSuccessResponse<TResponse>> {
         const mergedConfig: AxiosRequestConfig = {
             method: 'PUT',
             url,
@@ -150,9 +180,9 @@ export class CoreApiClient extends ApiClient {
      */
     protected patch<TPayload, TResponse = unknown>(
         url: string,
-        body: TPayload,
+        body?: TPayload,
         options?: RequestOptions<QueryParams>,
-    ): Promise<TResponse> {
+    ): Promise<ApiSuccessResponse<TResponse>> {
         const mergedConfig: AxiosRequestConfig = {
             method: 'PATCH',
             url,
@@ -169,9 +199,9 @@ export class CoreApiClient extends ApiClient {
      */
     protected delete<TQuery extends QueryParams, TResponse = unknown>(
         url: string,
-        query: TQuery,
+        query?: TQuery,
         options?: RequestOptions<TQuery>,
-    ): Promise<TResponse> {
+    ): Promise<ApiSuccessResponse<TResponse>> {
         const mergedConfig: AxiosRequestConfig = {
             method: 'DELETE',
             url,

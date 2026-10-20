@@ -1,11 +1,13 @@
 import {Stack, Typography} from '@mui/material';
+import {useUnit} from 'effector-react';
 
 import {Container} from '~/components/container';
 import {SmartButton} from '~/components/smart-button';
-import {FormController, useFormController} from '~/form/form-controller';
+import {FORM_ACTION, FormController, useFormController} from '~/form/form-controller';
 import {TextFieldController} from '~/form/input-controllers';
 import {SxMapProps} from '~/types';
 
+import {$isSubmittingLogin, loginEvent} from '../../models/auth';
 import {LoginSchema, LoginType} from './schema';
 
 const styles: SxMapProps<'container'> = {
@@ -19,7 +21,14 @@ const styles: SxMapProps<'container'> = {
 };
 
 export const LoginForm = (): React.JSX.Element => {
-    const form = useFormController<LoginType>(LoginSchema);
+    const [login, isSubmitting] = useUnit([loginEvent, $isSubmittingLogin]);
+    const form = useFormController<LoginType>(LoginSchema, {
+        action: FORM_ACTION.CREATE,
+        defaultValues: {
+            email: '',
+            password: '',
+        },
+    });
 
     return (
         <Container sx={styles.container}>
@@ -28,12 +37,12 @@ export const LoginForm = (): React.JSX.Element => {
                     Вход
                 </Typography>
 
-                <FormController {...form} onSubmit={() => null}>
+                <FormController {...form} onSubmit={login}>
                     <TextFieldController name="email" label="Email" />
                     <TextFieldController name="password" label="Пароль" type="password" />
                 </FormController>
 
-                <SmartButton fullWidth size="large">
+                <SmartButton fullWidth size="large" isSubmitting={isSubmitting}>
                     Войти
                 </SmartButton>
             </Stack>
