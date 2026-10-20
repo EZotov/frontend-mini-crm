@@ -5,7 +5,7 @@ import {RouterProvider} from 'react-router-dom';
 
 import {theme} from '~/styles/theme';
 
-import {router} from './router';
+import {router} from '../router';
 
 import '~/styles/index.css';
 

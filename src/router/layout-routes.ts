@@ -4,7 +4,7 @@ import MainPage from '../pages/main/page';
 
 export const layoutRoutes: RouteObject[] = [
     {
-        path: '/main',
+        index: true,
         Component: MainPage,
     },
 ];
