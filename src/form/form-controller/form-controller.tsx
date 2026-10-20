@@ -1,4 +1,4 @@
-import {Button} from '@mui/material';
+import {Box, Button} from '@mui/material';
 import React from 'react';
 import {FieldValues, FormProvider, FormProviderProps, SubmitHandler} from 'react-hook-form';
 import {Link} from 'react-router-dom';
@@ -47,7 +47,14 @@ export const FormController = <FV extends FieldValues = FieldValues>({
             <form onSubmit={() => handleSubmit(onSubmit)} noValidate>
                 {children}
 
-                <div className="flex space-x-5 w-full mt-5">
+                <Box
+                    sx={{
+                        display: 'flex',
+                        gap: 2.5,
+                        width: '100%',
+                        mt: 2.5,
+                    }}
+                >
                     {!hideActions && (
                         <>
                             <SmartButton
@@ -76,7 +83,7 @@ export const FormController = <FV extends FieldValues = FieldValues>({
                     )}
 
                     {customActions}
-                </div>
+                </Box>
             </form>
         </FormProvider>
     );

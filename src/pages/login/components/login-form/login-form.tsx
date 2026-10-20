@@ -32,20 +32,20 @@ export const LoginForm = (): React.JSX.Element => {
 
     return (
         <Container sx={styles.container}>
-            <Stack spacing={2}>
-                <Typography component="h2" align="center" sx={{fontSize: 20}}>
-                    Вход
-                </Typography>
+            <FormController {...form} onSubmit={login} hideActions>
+                <Stack direction="column" spacing={2}>
+                    <Typography component="h2" align="center" sx={{fontSize: 20}}>
+                        Вход
+                    </Typography>
 
-                <FormController {...form} onSubmit={login}>
                     <TextFieldController name="email" label="Email" />
                     <TextFieldController name="password" label="Пароль" type="password" />
-                </FormController>
 
-                <SmartButton fullWidth size="large" isSubmitting={isSubmitting}>
-                    Войти
-                </SmartButton>
-            </Stack>
+                    <SmartButton fullWidth size="large" isSubmitting={isSubmitting}>
+                        Войти
+                    </SmartButton>
+                </Stack>
+            </FormController>
         </Container>
     );
 };
