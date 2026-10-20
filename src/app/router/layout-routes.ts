@@ -1,3 +1,10 @@
 import type {RouteObject} from 'react-router-dom';
 
-export const layoutRoutes: RouteObject[] = [];
+import MainPage from '../pages/main/page';
+
+export const layoutRoutes: RouteObject[] = [
+    {
+        path: '/main',
+        Component: MainPage,
+    },
+];
