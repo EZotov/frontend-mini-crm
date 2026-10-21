@@ -9,6 +9,9 @@ const styles: SxMapProps<'box' | 'headline'> = {
         minHeight: '60px',
         alignItems: 'center',
         padding: [1, 2],
+        position: 'sticky',
+        top: 0,
+        zIndex: 1,
     },
     headline: {
         color: 'white',
@@ -18,7 +21,7 @@ const styles: SxMapProps<'box' | 'headline'> = {
 
 export const Header = (): React.JSX.Element => {
     return (
-        <Stack direction="row" sx={styles.box}>
+        <Stack component="header" direction="row" sx={styles.box}>
             <Typography sx={styles.headline}>Mini CRM</Typography>
         </Stack>
     );

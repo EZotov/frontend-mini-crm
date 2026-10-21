@@ -6,7 +6,7 @@ import {LoginResponseDto} from '~/api/services/main/schemas';
 import {createApiEffect} from '~/utils/effector/effect';
 
 export const loginEvent = createEvent<LoginRequestDto>();
-const resetAccessToken = createEvent();
+export const resetAccessToken = createEvent();
 
 // Effects
 const loginFx = createApiEffect<LoginRequestDto, LoginResponseDto>((payload) => mainApi.login(payload));

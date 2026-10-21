@@ -16,7 +16,7 @@ interface CreateEntityFactoryOptions<TParams, TResponse> {
  * @param initialData - дефолт значение стора с предполагаемым ответом API-вызова
  * @returns - сторы данных загрузки, ошибки, ответа и ивенты старта загрузки и очистки
  */
-export const createLoadableModelFactory = <TParams = void, TResponse = unknown>({
+export const loadableModelFactory = <TParams = void, TResponse = unknown>({
     loadEffect,
     initialData = null,
 }: CreateEntityFactoryOptions<TParams, TResponse>) => {

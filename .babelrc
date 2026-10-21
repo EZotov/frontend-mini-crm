@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    [
+      "effector/babel-plugin",
+      {
+        "addSid": true,
+        "addLoc": true,
+        "factories": ["src/utils/effector/model-factory/loadableModelFactory"]
+      }
+    ]
+  ]
+}

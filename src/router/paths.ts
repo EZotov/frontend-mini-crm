@@ -1,0 +1,9 @@
+export const ROUTE_PATHS = {
+    MAIN_PAGE: '/',
+    ACTIVITIES_PAGE: '/activities',
+    DEALS_PAGE: '/deals',
+    COMPANIES_PAGE: '/companies',
+    USERS_PAGE: '/users',
+    CUSTOMERS_PAGE: '/customers',
+    LOGIN: '/login',
+};
