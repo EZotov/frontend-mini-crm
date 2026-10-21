@@ -6,17 +6,18 @@ import {$accessToken} from '~/pages/login/models/auth';
 import {ApiAxiosError, ApiSuccessResponse} from './types';
 
 export class ApiError extends Error {
-    public code: string | null = null;
-    public statusCode: number | null = null;
-    public method: string | null = null;
+    public code: string | null;
+    public statusCode: number | null;
+    public method: string | null;
 
-    constructor(errorData: ApiAxiosError) {
-        super(errorData.message || 'API Error');
+    constructor(errorData?: ApiAxiosError) {
+        super(errorData?.message ?? '');
 
         this.name = 'ApiError';
-        this.code = errorData.code;
-        this.statusCode = errorData.fromResponse?.status ?? null;
-        this.method = errorData.fromResponse?.method?.toUpperCase() ?? null;
+
+        this.code = errorData?.code ?? null;
+        this.statusCode = errorData?.fromResponse?.status ?? null;
+        this.method = errorData?.fromResponse?.method?.toUpperCase() ?? null;
 
         Object.setPrototypeOf(this, ApiError.prototype);
     }
@@ -74,7 +75,7 @@ export class CoreApiClient extends ApiClient {
         this.instanceConfig = config ?? {};
 
         this.client = axios.create({
-            baseURL: '/api',
+            baseURL: 'http://localhost:3001/api',
             headers: {
                 ...(config?.headers && config.headers),
             },
@@ -112,7 +113,9 @@ export class CoreApiClient extends ApiClient {
                     });
                 }
 
-                throw new Error(error.message, {cause: error});
+                throw new ApiError({
+                    message: 'Запрос не получил ответа от сервера. Возможно проблемы с сетью',
+                });
             }
 
             throw error;

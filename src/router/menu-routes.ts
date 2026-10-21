@@ -1,11 +1,11 @@
-import {RouteObject} from 'react-router-dom';
-
 import MainPage from '~/pages/main/page';
+import {RouteObjectWithParams} from '~/types';
 
-export const routesWithMenu: RouteObject[] = [
+export const routesWithMenu: RouteObjectWithParams[] = [
     {
         index: true,
         Component: MainPage,
+        protected: true,
     },
     // {
     //     path: ROUTE_PATHS.USERS_PAGE,

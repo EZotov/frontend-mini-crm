@@ -1,8 +1,8 @@
 import type {AxiosResponse} from 'axios';
 
 export type ApiErrorResponse = {
-    code: string | null;
-    message: string | null;
+    code?: string | null;
+    message?: string | null;
 };
 
 export type ApiSuccessResponse<T> = {
@@ -11,7 +11,7 @@ export type ApiSuccessResponse<T> = {
 };
 
 export type ApiAxiosError = ApiErrorResponse & {
-    fromResponse: {
+    fromResponse?: {
         method: AxiosResponse['config']['method'];
         status: AxiosResponse['status'];
     };

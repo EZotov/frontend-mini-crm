@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import {Box, Button} from '@mui/material';
 import React from 'react';
 import {FieldValues, FormProvider, FormProviderProps, SubmitHandler} from 'react-hook-form';
@@ -44,7 +45,7 @@ export const FormController = <FV extends FieldValues = FieldValues>({
 
     return (
         <FormProvider<FV> {...formProviderProps}>
-            <form onSubmit={() => handleSubmit(onSubmit)} noValidate>
+            <form onSubmit={handleSubmit(onSubmit)} noValidate>
                 {children}
 
                 <Box

@@ -1,4 +1,4 @@
-import {createEvent, createStore} from 'effector';
+import {createEvent, createStore, sample} from 'effector';
 
 import mainApi from '~/api/services/main/endpoints';
 import {LoginRequestDto} from '~/api/services/main/operations';
@@ -19,3 +19,9 @@ export const $accessToken = createStore<string | null>(null)
 export const $isSubmittingLogin = createStore<boolean>(false)
     .on(loginFx.pending, () => true)
     .reset([loginFx.fail, loginFx.done]);
+
+// Samples
+sample({
+    clock: loginEvent,
+    target: loginFx,
+});

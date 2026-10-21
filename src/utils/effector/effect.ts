@@ -1,17 +1,9 @@
 import {createEffect, EventCallable, sample} from 'effector';
 
-import {ApiAxiosError, ApiErrorResponse, ApiSuccessResponse} from '~/api/types';
+import {ApiError} from '~/api/base-api';
+import {ApiErrorResponse, ApiSuccessResponse} from '~/api/types';
 
-// const errorMap: Record<string | number, string> = {
-//     400: 'Ошибка валидации запроса сервером',
-//     401: 'Неавторизованное действие',
-//     403: 'Доступ к операции запрещён',
-//     404: 'Ресурс не найден',
-//     500: 'Внутренняя ошибка сервера',
-//     502: 'Сервер временно недоступен',
-//     503: 'Сервер недоступен',
-//     504: 'Время ожидания ответа от сервера истекло',
-// };
+import {setToastError} from '../toast';
 
 export type EffectCallback<TParams, TResponse> = (params: TParams) => Promise<ApiSuccessResponse<TResponse>>;
 type EffectOptions = {
@@ -35,16 +27,14 @@ export const createApiEffect = <TParams = void, TResponse = unknown>(
 ) => {
     const disableErrorMessages = options?.disableErrorMessages ?? false;
 
-    const effect = createEffect<TParams, ApiSuccessResponse<TResponse>, ApiAxiosError>(callback);
+    const effect = createEffect<TParams, ApiSuccessResponse<TResponse>, ApiError>(callback);
 
     sample({
         clock: effect.failData,
-        filter: (data) => data.fromResponse.method !== 'get' && !disableErrorMessages,
+        filter: (data) => data.method !== 'get' && !disableErrorMessages,
         fn: (data) => {
-            const statusCode = data.fromResponse.status;
-            console.log(statusCode);
-
-            // TODO Вставить вызов toast
+            console.log(data);
+            setToastError(data);
         },
     });
 
@@ -52,7 +42,7 @@ export const createApiEffect = <TParams = void, TResponse = unknown>(
         // Перехват ошибки аутентификации
         sample({
             clock: effect.failData,
-            filter: (data) => data.fromResponse?.status === 401,
+            filter: (data) => data.statusCode === 401,
             target: options.authErrorEvent,
         });
     }

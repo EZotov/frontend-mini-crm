@@ -2178,6 +2178,7 @@ __metadata:
     react-dom: "npm:19.2.8"
     react-hook-form: "npm:^7.90.0"
     react-router-dom: "npm:7.18.4"
+    react-toastify: "npm:^11.1.0"
     typescript: "npm:5.7.3"
     typescript-eslint: "npm:8.69.0"
     vite: "npm:8.3.0"
@@ -3054,6 +3055,18 @@ __metadata:
     react-dom:
       optional: true
   checksum: 10c0/352d103f9d738c7bf56cbb135c0d3d44e6325d15e360f58b6e844c1f5f8cbcd4ccb2de347f14e53984683fc237505a045633e9cb92c5457a1162dae054e08a32
+  languageName: node
+  linkType: hard
+
+"react-toastify@npm:^11.1.0":
+  version: 11.1.0
+  resolution: "react-toastify@npm:11.1.0"
+  dependencies:
+    clsx: "npm:^2.1.1"
+  peerDependencies:
+    react: ^18 || ^19
+    react-dom: ^18 || ^19
+  checksum: 10c0/b621b8272bb9287ec19914b773d91c2f7741eedba253f2986150716d30c82ff069ba9780a7ab4cbb511175b3aeb6e35f003aef3f04742d77df79fb8f4c1c3c98
   languageName: node
   linkType: hard
 

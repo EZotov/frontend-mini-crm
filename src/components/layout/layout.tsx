@@ -1,6 +1,6 @@
 import {Box} from '@mui/material';
-import React from 'react';
 import {Outlet} from 'react-router-dom';
+import {ToastContainer} from 'react-toastify';
 
 import {SxMapProps} from '~/types';
 
@@ -28,6 +28,7 @@ export const Layout = () => {
                 <Outlet />
             </Box>
             <footer></footer>
+            <ToastContainer />
         </>
     );
 };

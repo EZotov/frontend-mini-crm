@@ -1,13 +1,21 @@
-import {createBrowserRouter, type RouteObject} from 'react-router-dom';
+import {createBrowserRouter} from 'react-router-dom';
+
+import {AuthChecker} from '~/components/auth-checker';
+import {RouteObjectWithParams} from '~/types';
 
 import {Layout} from '../components/layout/layout';
 import {layoutRoutes} from './layout-routes';
 
-const routes: RouteObject[] = [
+export const routes: RouteObjectWithParams[] = [
     {
         path: '/',
-        Component: Layout,
-        children: layoutRoutes,
+        Component: AuthChecker,
+        children: [
+            {
+                Component: Layout,
+                children: layoutRoutes,
+            },
+        ],
     },
 ];
 
