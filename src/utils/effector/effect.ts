@@ -8,10 +8,6 @@ import {setToastError} from '../toast';
 export type EffectCallback<TParams, TResponse> = (params: TParams) => Promise<ApiSuccessResponse<TResponse>>;
 type EffectOptions = {
     disableErrorMessages?: boolean;
-    message?: {
-        title?: string;
-        body: string;
-    };
     authErrorEvent?: EventCallable<ApiErrorResponse>;
 };
 
