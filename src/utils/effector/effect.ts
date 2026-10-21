@@ -34,10 +34,7 @@ export const createApiEffect = <TParams = void, TResponse = unknown>(
     sample({
         clock: effect.failData,
         filter: (data) => data.method !== 'get' && !disableErrorMessages,
-        fn: (data) => {
-            console.log(data);
-            setToastError(data);
-        },
+        fn: (data) => setToastError(data),
     });
 
     if (options?.authErrorEvent) {
