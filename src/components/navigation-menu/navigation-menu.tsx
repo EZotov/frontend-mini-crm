@@ -1,8 +1,10 @@
-import {Button, Stack, Typography} from '@mui/material';
+import {Stack, Typography} from '@mui/material';
 import React from 'react';
-import {Link} from 'react-router-dom';
 
+import {Container} from '~/components/container';
 import {ROUTE_PATHS} from '~/router/paths';
+
+import {NavigationItem} from './navigation-item';
 
 const navItems = [
     {
@@ -39,13 +41,17 @@ const navItems = [
 
 export const NavigationMenu = (): React.JSX.Element => {
     return (
-        <Stack
+        <Container
             component="aside"
-            spacing={3}
             sx={{
-                padding: [3, 2],
+                paddingTop: 2,
+                paddingBottom: 2,
+                paddingLeft: 3,
+                paddingRight: 3,
+                borderRadius: 0,
+                minWidth: 0,
+                padding: 0,
                 height: 'calc(100vh - 62px)',
-                backgroundColor: '#e9e9e957',
                 flexBasis: '15%',
                 flexShrink: 0,
                 position: 'sticky',
@@ -53,22 +59,22 @@ export const NavigationMenu = (): React.JSX.Element => {
                 left: 0,
             }}
         >
-            <Typography
-                component="h2"
-                sx={{
-                    fontSize: 24,
-                }}
-                align="center"
-            >
-                Навигация
-            </Typography>
-            <Stack direction="column" spacing={2}>
-                {navItems.map((nav) => (
-                    <Button component={Link} key={nav.id} to={nav.link}>
-                        {nav.title}
-                    </Button>
-                ))}
+            <Stack spacing={3}>
+                <Typography
+                    component="h2"
+                    sx={{
+                        fontSize: 24,
+                    }}
+                    align="center"
+                >
+                    Навигация
+                </Typography>
+                <Stack direction="column" spacing={2}>
+                    {navItems.map((nav) => (
+                        <NavigationItem key={`menu-item-${nav.id}`} title={nav.title} to={nav.link} />
+                    ))}
+                </Stack>
             </Stack>
-        </Stack>
+        </Container>
     );
 };

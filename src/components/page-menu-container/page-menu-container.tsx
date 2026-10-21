@@ -2,7 +2,7 @@ import {Box} from '@mui/material';
 import {Outlet} from 'react-router-dom';
 
 import {Container} from '../container';
-import {NavigationMenu} from './navigation-menu/navigation-menu';
+import {NavigationMenu} from '../navigation-menu/navigation-menu';
 
 export const PageMenuContainer = (): React.JSX.Element => {
     return (

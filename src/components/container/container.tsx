@@ -1,11 +1,11 @@
-import {Box, SxProps} from '@mui/material';
+import {Box, BoxProps, SxProps} from '@mui/material';
 
 import {SxMapProps} from '~/types';
 
 const styles: SxMapProps<'container'> = {
     container: {
-        backgroundColor: 'rgba(255, 255, 255, 0.25)', // Полупрозрачный белый фон
-        backdropFilter: 'blur(10px)', // Эффект матового стекла
+        backgroundColor: 'transparentBackground',
+        backdropFilter: 'blur(10px)',
         borderRadius: '24px',
         padding: '50px 35px 35px 35px',
         boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.15)',
@@ -13,16 +13,20 @@ const styles: SxMapProps<'container'> = {
     },
 };
 
-interface ContainerProps {
+interface ContainerProps extends BoxProps {
     sx?: SxProps;
     children?: React.ReactNode;
 }
 
-export const Container = ({sx, children}: ContainerProps) => {
+export const Container = ({sx, children, ...props}: ContainerProps) => {
     const boxStyles = {
         ...styles.container,
         ...(sx && sx),
     };
 
-    return <Box sx={boxStyles}>{children}</Box>;
+    return (
+        <Box {...props} sx={boxStyles}>
+            {children}
+        </Box>
+    );
 };
