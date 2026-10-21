@@ -60,13 +60,7 @@ export const NavigationMenu = (): React.JSX.Element => {
             }}
         >
             <Stack spacing={3}>
-                <Typography
-                    component="h2"
-                    sx={{
-                        fontSize: 24,
-                    }}
-                    align="center"
-                >
+                <Typography component="h2" sx={{fontSize: 24}} align="center">
                     Навигация
                 </Typography>
                 <Stack direction="column" spacing={2}>

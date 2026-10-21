@@ -2,7 +2,7 @@ import {Box, Button, Stack, Typography} from '@mui/material';
 import React, {ReactNode} from 'react';
 import {Link, To} from 'react-router-dom';
 
-import {Action} from '~/types';
+import {Action, SxMapProps} from '~/types';
 
 const getLinkOrClickButton = (title: string, options: {to?: To; onClick?: React.MouseEventHandler}) => {
     const {to, onClick} = options;
@@ -16,6 +16,12 @@ const getLinkOrClickButton = (title: string, options: {to?: To; onClick?: React.
             {title}
         </Button>
     );
+};
+
+const styles: SxMapProps<'wrapper' | 'pageHeader' | 'pageHeaderHeadline'> = {
+    wrapper: {paddingBottom: 2, marginBottom: 2, borderBottom: '1px solid #585555'},
+    pageHeader: {display: 'flex', justifyContent: 'space-between', padding: '4px 8px', alignItems: 'center'},
+    pageHeaderHeadline: {fontSize: 24, fontWeight: 500},
 };
 
 interface InnerPageProps {
@@ -48,13 +54,9 @@ export const InnerPage = ({
 
     return (
         <>
-            <Box sx={{paddingBottom: 2, marginBottom: 2, borderBottom: '1px solid #585555'}}>
-                <Stack
-                    direction="row"
-                    sx={{display: 'flex', justifyContent: 'space-between', padding: '4px 8px', alignItems: 'center'}}
-                    spacing={2}
-                >
-                    <Typography component="h2" sx={{fontSize: 24, fontWeight: 500}}>
+            <Box sx={styles.wrapper}>
+                <Stack direction="row" sx={styles.pageHeader} spacing={2}>
+                    <Typography component="h2" sx={styles.pageHeaderHeadline}>
                         {pageTitle}
                     </Typography>
 

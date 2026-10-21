@@ -30,3 +30,4 @@
 *   **Стейт-менеджер:** Effector
 *   **Маршрутизация:** React Router
 *   **HTTP-клиент:** Axios
+*   **Формы и валидация:** React-Hook-Form, Zod

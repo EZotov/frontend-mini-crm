@@ -1,44 +1,45 @@
-import {createEvent, createStore} from 'effector';
+import {createEvent, createStore, Effect} from 'effector';
 
-import {ApiAxiosError, ApiSuccessResponse} from '~/api/types';
+import {ApiError} from '~/api/base-api';
+import {ApiSuccessResponse} from '~/api/types';
 
-import {createApiEffect, EffectCallback} from './effect';
-
-interface CreateEntityFactoryOptions<TParams, TResponse> {
-    loadEffect: EffectCallback<TParams, TResponse>;
-    initialData?: ApiSuccessResponse<TResponse> | null;
+interface CreateEntityFactoryOptions<TParams, TResponse, TDataStore> {
+    loadFx: Effect<TParams, ApiSuccessResponse<TResponse>, ApiError>;
+    initialData?: TDataStore | null;
+    getStoreData?: (data: ApiSuccessResponse<TResponse>) => TDataStore;
 }
 
 /**
  * Функция-фабрика для автоматической генерации типовых сторов и эффектов под каждый API-запрос.
  * Исключает дублирование кода (boilerplate) при работе с сервером.
- * @param loadEffect - эффект вызова API
+ * @param loadFx - эффект вызова API
  * @param initialData - дефолт значение стора с предполагаемым ответом API-вызова
  * @returns - сторы данных загрузки, ошибки, ответа и ивенты старта загрузки и очистки
  */
-export const loadableModelFactory = <TParams = void, TResponse = unknown>({
-    loadEffect,
+export const loadableModelFactory = <TParams = void, TResponse = void, TDataStore = ApiSuccessResponse<TResponse>>({
+    loadFx,
     initialData = null,
-}: CreateEntityFactoryOptions<TParams, TResponse>) => {
-    const loadFx = createApiEffect<TParams, TResponse>(loadEffect);
-
-    const $data = createStore<ApiSuccessResponse<TResponse> | null>(initialData);
+    getStoreData,
+}: CreateEntityFactoryOptions<TParams, TResponse, TDataStore>) => {
+    const $data = createStore<TDataStore | null>(initialData);
     const $isLoading = loadFx.pending;
-    const $error = createStore<ApiAxiosError | null>(null);
-
+    const $error = createStore<ApiError | null>(null);
     const reset = createEvent();
 
-    $data.on(loadFx.doneData, (_, data) => data).reset(reset);
+    $data
+        .on(loadFx.doneData, (_, response) => {
+            if (getStoreData) {
+                return getStoreData(response);
+            }
+
+            return response as unknown as TDataStore;
+        })
+        .reset(reset);
+
     $error
         .on(loadFx.failData, (_, error) => error)
         .on(loadFx, () => null)
         .reset(reset);
 
-    return {
-        $data,
-        $isLoading,
-        $error,
-        load: loadFx,
-        reset,
-    };
+    return {$data, $isLoading, $error, load: loadFx, reset};
 };
