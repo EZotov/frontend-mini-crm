@@ -1,7 +1,7 @@
 import type {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
 import axios, {isAxiosError} from 'axios';
 
-import {$accessToken} from '~/pages/login/models/auth';
+import {authRequestInterceptor} from '~/api/interceptors/auth';
 
 import {ApiAxiosError, ApiSuccessResponse} from './types';
 
@@ -27,6 +27,7 @@ export class ApiError extends Error {
 
 export type QueryParams = Record<string, unknown> | URLSearchParams | void;
 export type Headers = Record<string, string>;
+type ApiErrorMiddleware = (error: ApiError, client: AxiosInstance) => ApiError | void;
 
 export interface RequestOptions<TQuery extends QueryParams = QueryParams, THeaders extends Headers = Headers> {
     query?: TQuery;
@@ -82,15 +83,19 @@ export class CoreApiClient extends ApiClient {
             ...config,
         });
 
-        this.client.interceptors.request.use((config) => {
-            const token = $accessToken.getState();
+        this.client.interceptors.request.use(authRequestInterceptor);
+    }
 
-            if (token && config.headers) {
-                config.headers.Authorization = `Bearer ${token}`;
+    private applyErrorMiddlewares(error: ApiError, middlewares: ApiErrorMiddleware[]): ApiError {
+        middlewares.forEach((middleware) => {
+            try {
+                middleware(error, this.client);
+            } catch (middlewareError) {
+                console.error('Ошибка в работе мидлвара:', middlewareError);
             }
-
-            return config;
         });
+
+        return error;
     }
 
     private async request<T>(config: AxiosRequestConfig): Promise<ApiSuccessResponse<T>> {

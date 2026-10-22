@@ -1,7 +1,7 @@
 import {CoreApiClient} from '~/api/base-api';
 
-import {LoginRequestDto} from './operations';
-import {LoginResponseDto} from './schemas';
+import type {LoginRequestDto} from './operations';
+import type {LoginResponseDto, RefreshTokenResponseDto} from './schemas';
 
 export class MainApiService extends CoreApiClient {
     // Auth
@@ -10,7 +10,7 @@ export class MainApiService extends CoreApiClient {
     }
 
     refresh() {
-        return this.post<void>(`/v1/auth/refresh`);
+        return this.post<void, RefreshTokenResponseDto>(`/v1/auth/refresh`);
     }
 
     // Users

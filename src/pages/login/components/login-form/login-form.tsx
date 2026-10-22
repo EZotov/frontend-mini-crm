@@ -7,7 +7,7 @@ import {FORM_ACTION, FormController, useFormController} from '~/form/form-contro
 import {TextFieldController} from '~/form/input-controllers';
 import {SxMapProps} from '~/types';
 
-import {$isSubmittingLogin, loginEvent} from '../../models/auth';
+import {$isLoginSubmitting, loginEvent} from '../../models/login';
 import {LoginSchema, LoginType} from './schema';
 
 const styles: SxMapProps<'container'> = {
@@ -21,7 +21,7 @@ const styles: SxMapProps<'container'> = {
 };
 
 export const LoginForm = (): React.JSX.Element => {
-    const [login, isSubmitting] = useUnit([loginEvent, $isSubmittingLogin]);
+    const [login, isLoginSubmitting] = useUnit([loginEvent, $isLoginSubmitting]);
     const form = useFormController<LoginType>(LoginSchema, {
         action: FORM_ACTION.CREATE,
         defaultValues: {
@@ -41,7 +41,7 @@ export const LoginForm = (): React.JSX.Element => {
                     <TextFieldController name="email" label="Email" />
                     <TextFieldController name="password" label="Пароль" type="password" />
 
-                    <SmartButton fullWidth size="large" isSubmitting={isSubmitting}>
+                    <SmartButton fullWidth size="large" isSubmitting={isLoginSubmitting}>
                         Войти
                     </SmartButton>
                 </Stack>

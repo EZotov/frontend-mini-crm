@@ -2,7 +2,7 @@ import {useUnit} from 'effector-react';
 import React from 'react';
 import {matchRoutes, Navigate, Outlet, useLocation} from 'react-router-dom';
 
-import {$accessToken} from '~/pages/login/models/auth';
+import {$accessToken} from '~/models/auth';
 import {routes} from '~/router';
 import {ROUTE_PATHS} from '~/router/paths';
 
