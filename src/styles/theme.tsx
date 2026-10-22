@@ -2,11 +2,9 @@ import {createTheme} from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
     interface Palette {
-        blockBackground: string;
         transparentBackground: string;
     }
     interface PaletteOptions {
-        blockBackground?: string;
         transparentBackground?: string;
     }
 }
@@ -21,7 +19,6 @@ export const theme = createTheme({
         secondary: {
             main: 'rgb(61, 73, 80)',
         },
-        blockBackground: '#caced194',
         transparentBackground: ' #e9e9e957',
     },
     // 2. Настройка шрифтов

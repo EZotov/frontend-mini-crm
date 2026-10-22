@@ -30,6 +30,10 @@ export const LoginForm = (): React.JSX.Element => {
         },
     });
 
+    const {
+        formState: {isSubmitted, isValid},
+    } = form;
+
     return (
         <Container sx={styles.container}>
             <FormController {...form} onSubmit={login} hideActions>
@@ -41,7 +45,12 @@ export const LoginForm = (): React.JSX.Element => {
                     <TextFieldController name="email" label="Email" />
                     <TextFieldController name="password" label="Пароль" type="password" />
 
-                    <SmartButton fullWidth size="large" isSubmitting={isLoginSubmitting}>
+                    <SmartButton
+                        fullWidth
+                        size="large"
+                        isSubmitting={isLoginSubmitting}
+                        disabled={isSubmitted && !isValid}
+                    >
                         Войти
                     </SmartButton>
                 </Stack>

@@ -7,7 +7,7 @@ const styles: SxMapProps<'navItem'> = {
     navItem: {
         fontWeight: 600,
         '&.active': {
-            backgroundColor: 'blockBackground',
+            backgroundColor: 'transparentBackground',
         },
     },
 };
