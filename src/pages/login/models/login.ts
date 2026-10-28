@@ -1,6 +1,6 @@
 import {createEvent, sample} from 'effector';
 
-import mainApi from '~/api/services/main/endpoints';
+import {mainApi} from '~/api/services/main/endpoints';
 import {LoginRequestDto} from '~/api/services/main/operations';
 import {LoginResponseDto} from '~/api/services/main/schemas';
 import {ROUTE_PATHS} from '~/router/paths';

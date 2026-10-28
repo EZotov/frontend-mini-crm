@@ -1,6 +1,6 @@
 import {createEvent, createStore, sample} from 'effector';
 
-import mainApi from '~/api/services/main/endpoints';
+import {mainApi} from '~/api/services/main/endpoints';
 import {loginFx} from '~/pages/login/models/login';
 import {authErrorEvent, createApiEffect} from '~/utils/effector/api-effect';
 

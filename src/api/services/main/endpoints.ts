@@ -3,7 +3,7 @@ import {CoreApiClient} from '~/api/base-api';
 import type {LoginRequestDto} from './operations';
 import type {LoginResponseDto, RefreshTokenResponseDto} from './schemas';
 
-export class MainApiService extends CoreApiClient {
+class MainApiService extends CoreApiClient {
     // Auth
     login(body: LoginRequestDto) {
         return this.post<LoginRequestDto, LoginResponseDto>(`/v1/auth/sign-in`, body);
@@ -19,4 +19,4 @@ export class MainApiService extends CoreApiClient {
     }
 }
 
-export default new MainApiService();
+export const mainApi = new MainApiService();

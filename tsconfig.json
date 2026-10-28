@@ -1,35 +1,27 @@
 {
   "compilerOptions": {
-    /* Type Checking */
     "strict": true,
     "types": ["vite/client", "vite-plugin-svgr/client"],
-
-    /* Modules */
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "paths": {
-      "~/*": ["./src/*"]
-    },
-
-    /* Emit */
-    "noEmit": true,
-
-    /* Interop Constraints */
-    "allowSyntheticDefaultImports": true,
-    "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true,
-
-    /* Language and Environment */
     "target": "ES2020",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "useDefineForClassFields": true,
     "jsx": "react-jsx",
-
-    /* Completeness */
-    "skipLibCheck": true
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "outDir": "./dist",
+    "noEmit": true,
+    "incremental": false,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   },
   "include": ["src"],
-  "references": [{"path": "./tsconfig.node.json"}]
+  "exclude": ["node_modules", "dist"]
 }
