@@ -11,7 +11,7 @@ import {internalRedirectFx} from '~/utils/effector/redirects';
 export const loginEvent = createEvent<LoginRequestDto>();
 
 // Effects
-export const loginFx = createApiEffect<LoginRequestDto, LoginResponseDto>((payload) => mainApi.login(payload));
+export const loginFx = createApiEffect<LoginRequestDto, LoginResponseDto>((payload) => mainApi.signIn(payload));
 
 // Stores
 export const $isLoginSubmitting = loginFx.pending;

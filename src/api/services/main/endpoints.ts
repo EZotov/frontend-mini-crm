@@ -1,12 +1,16 @@
 import {CoreApiClient} from '~/api/base-api';
 
-import type {LoginRequestDto} from './operations';
-import type {LoginResponseDto, RefreshTokenResponseDto} from './schemas';
+import type {LoginRequestDto, RegistrationRequestDto} from './operations';
+import type {LoginResponseDto, RefreshTokenResponseDto, RegistrationResponseDto} from './schemas';
 
 class MainApiService extends CoreApiClient {
     // Auth
-    login(body: LoginRequestDto) {
+    signIn(body: LoginRequestDto) {
         return this.post<LoginRequestDto, LoginResponseDto>(`/v1/auth/sign-in`, body);
+    }
+
+    signUp(body: RegistrationRequestDto) {
+        return this.post<RegistrationRequestDto, RegistrationResponseDto>(`/v1/auth/sign-in`, body);
     }
 
     refresh() {

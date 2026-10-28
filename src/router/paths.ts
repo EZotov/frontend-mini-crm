@@ -6,5 +6,6 @@ export const ROUTE_PATHS = {
     USERS_PAGE: '/users',
     USERS_CREATE_PAGE: '/users/create',
     CUSTOMERS_PAGE: '/customers',
-    LOGIN: '/login',
+    LOGIN: '/sign-in',
+    REGISTRATION: '/sign-up',
 };
