@@ -1,25 +1,35 @@
-import {attach, createEvent, createStore, sample} from 'effector';
+import {attach, createEffect, createEvent, createStore, sample} from 'effector';
 
+import {setInterceptorToken} from '~/api/interceptors/auth';
 import {mainApi} from '~/api/services/main/endpoints';
 import {loginFx} from '~/pages/login/models/login';
 import {authErrorEvent, createApiEffect} from '~/utils/effector/api-effect';
 
 // Events
 export const resetAccessToken = createEvent();
+export const logoutEvent = createEvent();
 
 // Effects
-const refreshAuthTokenFx = createApiEffect(() => mainApi.refresh(), {handleAuthError: false});
+const refreshAuthTokenFx = createApiEffect(() => mainApi.refresh(), {
+    handleAuthError: false,
+    disableErrorMessages: true,
+});
 export const getAppAuthFx = attach({effect: refreshAuthTokenFx});
 export const refreshAuthFx = attach({effect: refreshAuthTokenFx});
 
-// Stores
-export const $isAuthCheckingEnabled = createStore<boolean>(false).on(getAppAuthFx.done, () => true);
+const syncTokenWithApiFx = createEffect((token: string | null) => setInterceptorToken(token));
 
+export const logoutFx = createApiEffect(() => mainApi.logout());
+
+// Stores
+export const $isAuthCheckingEnabled = createStore<boolean>(false).on(getAppAuthFx.finally, () => true);
 export const $accessToken = createStore<string | null>(null)
     .on(getAppAuthFx.doneData, (_, payload) => payload.data.accessToken)
     .on(loginFx.doneData, (_, payload) => payload.data.accessToken)
     .on(refreshAuthFx.doneData, (_, payload) => payload.data.accessToken)
     .reset(resetAccessToken);
+
+export const $isLogoutSubmitting = logoutFx.pending;
 
 // Samples
 
@@ -35,4 +45,19 @@ sample({
     clock: refreshAuthFx.failData,
     filter: (error) => error.statusCode === 401,
     target: resetAccessToken,
+});
+
+sample({
+    clock: logoutEvent,
+    target: logoutFx,
+});
+
+sample({
+    clock: logoutFx.done,
+    target: resetAccessToken,
+});
+
+sample({
+    clock: $accessToken,
+    target: syncTokenWithApiFx,
 });

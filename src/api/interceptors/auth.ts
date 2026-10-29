@@ -1,9 +1,14 @@
 import {RequestInterceptor} from '~/types';
 
-import {$accessToken} from '../../models/auth';
+let currentToken: string | null = null;
+
+// Функция синхронизации, которую мы вызовем из модели
+export const setInterceptorToken = (token: string | null) => {
+    currentToken = token;
+};
 
 export const authRequestInterceptor: RequestInterceptor = (config) => {
-    const token = $accessToken.getState();
+    const token = currentToken;
 
     if (token && config.headers) {
         config.headers.Authorization = `Bearer ${token}`;

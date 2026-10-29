@@ -17,6 +17,10 @@ class MainApiService extends CoreApiClient {
         return this.post<void, RefreshTokenResponseDto>(`/v1/auth/refresh`);
     }
 
+    logout() {
+        return this.post(`/v1/auth/logout`);
+    }
+
     // Users
     getUsers() {
         return this.get<void>(`/v1/users`);
