@@ -5,7 +5,7 @@ import {LoginRequestDto} from '~/api/services/main/operations';
 import {LoginResponseDto} from '~/api/services/main/schemas';
 import {ROUTE_PATHS} from '~/router/paths';
 import {createApiEffect} from '~/utils/effector/api-effect';
-import {internalRedirectFx} from '~/utils/effector/redirects';
+import {internalRedirectFx} from '~/models/redirects';
 
 //Events
 export const loginEvent = createEvent<LoginRequestDto>();

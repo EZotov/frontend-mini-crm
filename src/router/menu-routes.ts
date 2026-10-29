@@ -8,12 +8,12 @@ export const routesWithMenu: RouteObjectWithParams[] = [
     {
         index: true,
         Component: MainPage,
-        // protected: true,
+        protected: true,
     },
     {
         path: ROUTE_PATHS.USERS_PAGE,
         Component: UsersPage,
-        // protected: true,
+        protected: true,
     },
     // {
     //     path: ROUTE_PATHS.COMPANIES_PAGE,

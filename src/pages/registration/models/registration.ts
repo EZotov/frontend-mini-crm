@@ -3,9 +3,9 @@ import {createEvent, sample} from 'effector';
 import {mainApi} from '~/api/services/main/endpoints';
 import {RegistrationRequestDto} from '~/api/services/main/operations';
 import {RegistrationResponseDto} from '~/api/services/main/schemas';
+import {internalRedirectFx} from '~/models/redirects';
 import {ROUTE_PATHS} from '~/router/paths';
 import {createApiEffect} from '~/utils/effector/api-effect';
-import {internalRedirectFx} from '~/utils/effector/redirects';
 
 //Events
 export const registrationEvent = createEvent<RegistrationRequestDto>();

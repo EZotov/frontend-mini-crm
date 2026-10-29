@@ -27,7 +27,6 @@ export class ApiError extends Error {
 
 export type QueryParams = Record<string, unknown> | URLSearchParams | void;
 export type Headers = Record<string, string>;
-type ApiErrorMiddleware = (error: ApiError, client: AxiosInstance) => ApiError | void;
 
 export interface RequestOptions<TQuery extends QueryParams = QueryParams, THeaders extends Headers = Headers> {
     query?: TQuery;
@@ -76,7 +75,7 @@ export class CoreApiClient extends ApiClient {
         this.instanceConfig = config ?? {};
 
         this.client = axios.create({
-            baseURL: 'http://localhost:3001/api',
+            baseURL: this.instanceConfig?.baseURL || '/api',
             headers: {
                 ...(config?.headers && config.headers),
             },
@@ -84,18 +83,6 @@ export class CoreApiClient extends ApiClient {
         });
 
         this.client.interceptors.request.use(authRequestInterceptor);
-    }
-
-    private applyErrorMiddlewares(error: ApiError, middlewares: ApiErrorMiddleware[]): ApiError {
-        middlewares.forEach((middleware) => {
-            try {
-                middleware(error, this.client);
-            } catch (middlewareError) {
-                console.error('Ошибка в работе мидлвара:', middlewareError);
-            }
-        });
-
-        return error;
     }
 
     private async request<T>(config: AxiosRequestConfig): Promise<ApiSuccessResponse<T>> {
