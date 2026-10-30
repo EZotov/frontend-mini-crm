@@ -1,4 +1,4 @@
-import {Box, BoxProps, SxProps} from '@mui/material';
+import {Box, BoxProps, SxProps, Typography} from '@mui/material';
 
 import {SxMapProps} from '~/types';
 
@@ -16,18 +16,44 @@ const styles: SxMapProps<'container'> = {
 interface ContainerProps extends BoxProps {
     sx?: SxProps;
     children?: React.ReactNode;
+    isLoading?: boolean;
     isContentContainer?: boolean;
+    isEmptyList?: boolean;
+    emptyListMessage?: string;
 }
 
-export const Container = ({sx, children, ...props}: ContainerProps) => {
+export const Container = ({
+    sx,
+    children,
+    isLoading = false,
+    isEmptyList = false,
+    emptyListMessage = 'Список элементов пуст',
+    ...props
+}: ContainerProps) => {
     const boxStyles = {
         ...styles.container,
         ...(sx && sx),
     };
 
+    const renderContent = () => {
+        if (isLoading) {
+            return <>Загрузка...</>;
+        }
+
+        if (isEmptyList) {
+            return (
+                <Typography align="center" color="primary">
+                    {emptyListMessage}
+                </Typography>
+            );
+        }
+
+        return children;
+    };
+
     return (
         <Box {...props} sx={boxStyles}>
-            {children}
+            {renderContent()}
         </Box>
     );
 };

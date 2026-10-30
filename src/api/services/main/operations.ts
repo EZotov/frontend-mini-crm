@@ -12,3 +12,10 @@ export type RegistrationRequestBody =
 export type GetUsersQuery = PaginationState & {
     role?: string;
 };
+
+// Users
+export type GetUserPath = operations['UserController_getUser']['parameters']['path'];
+export type UpdateUserPath = operations['UserController_updateUserProfile']['parameters']['path'];
+export type UpdateUserBody =
+    operations['UserController_updateUserProfile']['requestBody']['content']['application/json'];
+export type UpdateUserRequest = UpdateUserPath & UpdateUserBody;

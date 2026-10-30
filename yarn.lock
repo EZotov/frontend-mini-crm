@@ -2247,6 +2247,7 @@ __metadata:
     eslint-plugin-simple-import-sort: "npm:13.0.0"
     globals: "npm:17.12.0"
     openapi-typescript: "npm:^7.13.0"
+    patronum: "npm:^2.3.0"
     prettier: "npm:3.4.2"
     react: "npm:19.2.8"
     react-dom: "npm:19.2.8"
@@ -3050,6 +3051,15 @@ __metadata:
   version: 4.0.0
   resolution: "path-type@npm:4.0.0"
   checksum: 10c0/666f6973f332f27581371efaf303fd6c272cc43c2057b37aa99e3643158c7e4b2626549555d88626e99ea9e046f82f32e41bbde5f1508547e9a11b149b52387c
+  languageName: node
+  linkType: hard
+
+"patronum@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "patronum@npm:2.3.0"
+  peerDependencies:
+    effector: ^23
+  checksum: 10c0/dfac44a7e3943cce9d673522749992597a5525fd2e66ba5283b81070bf597b5041abe08e7bdea22f3f8f42eafd737fdd775958c34cd008e5332e5c74441d05b8
   languageName: node
   linkType: hard
 

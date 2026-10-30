@@ -1,7 +1,14 @@
 import {CoreApiClient} from '~/api/base-api';
 
-import type {GetUsersQuery, LoginRequestBody, RegistrationRequestBody} from './operations';
-import type {LoginDto, RefreshTokenDto, RegistrationDto, UserDto} from './schemas';
+import type {
+    GetUserPath,
+    GetUsersQuery,
+    LoginRequestBody,
+    RegistrationRequestBody,
+    UpdateUserBody,
+    UpdateUserRequest,
+} from './operations';
+import type {CreateOrUpdateDto, LoginDto, RefreshTokenDto, RegistrationDto, UserDto} from './schemas';
 
 class MainApiService extends CoreApiClient {
     // Auth
@@ -22,8 +29,20 @@ class MainApiService extends CoreApiClient {
     }
 
     // Users
-    getUsers(query: GetUsersQuery) {
+    getUsersList(query: GetUsersQuery) {
         return this.get<GetUsersQuery, UserDto[]>(`/v1/users`, query);
+    }
+
+    getUser({id}: GetUserPath) {
+        return this.get<void, UserDto>(`/v1/users/${id}`);
+    }
+
+    updateUser({id, ...body}: UpdateUserRequest) {
+        return this.put<UpdateUserBody, CreateOrUpdateDto>(`/v1/users/${id}`, body);
+    }
+
+    deleteUser(id: string) {
+        return this.delete(`/v1/users/${id}`);
     }
 }
 
