@@ -15,3 +15,19 @@ export type RouteObjectWithParams = RouteObject & {
 };
 
 export type RequestInterceptor = (config: InternalAxiosRequestConfig) => InternalAxiosRequestConfig;
+
+type Params = Record<string, unknown>;
+
+type ParamsType<TParams extends Params> = {
+    params?: TParams;
+};
+
+export type GateWithParams<
+    TParams extends Params,
+    TExpandParams extends Params = Record<string, unknown>,
+> = TExpandParams extends Params ? ParamsType<TParams> & TExpandParams : ParamsType<TParams>;
+
+export type PaginationState = {
+    pageNum: number;
+    pageSize: number;
+};

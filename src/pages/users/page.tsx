@@ -1,12 +1,19 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {Box, Button, Card, CardActions, CardContent, Stack, Typography} from '@mui/material';
+import {useGate, useUnit} from 'effector-react';
 
 import {Container} from '~/components/container';
 import {InnerPage} from '~/components/inner-page';
 import {Pagination} from '~/components/pagination';
 import {ROUTE_PATHS} from '~/router/paths';
 
+import {$paginationState, $usersCount, setPaginationEvent, userPageGate} from './models/users';
+
 const UsersPage = () => {
+    useGate(userPageGate);
+
+    const [paginationState, setPagination, usersCount] = useUnit([$paginationState, setPaginationEvent, $usersCount]);
+
     return (
         <InnerPage
             pageTitle="Пользователи системы"
@@ -149,7 +156,7 @@ const UsersPage = () => {
                         </Box>
                     </Card>
                 </Stack>
-                <Pagination totalCount={12} pageSize={10} onChange={() => null} />
+                <Pagination totalCount={usersCount} paginationState={paginationState} onChange={setPagination} />
             </Container>
         </InnerPage>
     );

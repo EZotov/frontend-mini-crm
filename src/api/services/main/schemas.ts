@@ -1,8 +1,11 @@
 import {components} from './openapi-schema';
 
 // Login
-export type LoginResponseDto = components['schemas']['TokensDto'];
-export type RefreshTokenResponseDto = components['schemas']['RefreshAccessTokenDto'];
+export type LoginDto = components['schemas']['TokensDto'];
+export type RefreshTokenDto = components['schemas']['RefreshAccessTokenDto'];
 
 // Registration
-export type RegistrationResponseDto = components['schemas']['TokensDto'];
+export type RegistrationDto = components['schemas']['TokensDto'];
+
+// Users
+export type UserDto = components['schemas']['UserDto'];
