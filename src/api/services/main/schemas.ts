@@ -1,15 +1,8 @@
-// Login
-export type LoginResponseDto = {
-    accessToken: string;
-    refreshToken: string;
-};
+import {components} from './openapi-schema';
 
-export type RefreshTokenResponseDto = {
-    accessToken: string;
-};
+// Login
+export type LoginResponseDto = components['schemas']['TokensDto'];
+export type RefreshTokenResponseDto = components['schemas']['RefreshAccessTokenDto'];
 
 // Registration
-export type RegistrationResponseDto = {
-    accessToken: string;
-    refreshToken: string;
-};
+export type RegistrationResponseDto = components['schemas']['TokensDto'];
