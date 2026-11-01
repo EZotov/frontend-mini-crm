@@ -52,6 +52,7 @@ const styles: SxMapProps<'card' | 'accountSection' | 'infoContainer'> = {
     },
 };
 
+// Страница доступна только для админа
 const UsersPage = (): React.JSX.Element => {
     useGate(userPageGate);
 

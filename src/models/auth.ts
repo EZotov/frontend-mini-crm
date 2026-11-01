@@ -3,6 +3,7 @@ import {createGate} from 'effector-react';
 
 import {setInterceptorToken} from '~/api/interceptors/auth';
 import {mainApi} from '~/api/services/main/endpoints';
+import {UserDto} from '~/api/services/main/schemas';
 import {loginFx} from '~/pages/login/models/login';
 import {ROUTE_PATHS} from '~/router/paths';
 import {authErrorEvent, createApiEffect} from '~/utils/effector/api-effect';
@@ -22,6 +23,7 @@ const refreshAuthTokenFx = createApiEffect(() => mainApi.refresh(), {
 });
 export const getAppAuthFx = attach({effect: refreshAuthTokenFx});
 export const refreshAuthFx = attach({effect: refreshAuthTokenFx});
+export const getMyProfileFx = createApiEffect<void, UserDto>(() => mainApi.getMyProfile());
 
 const syncTokenWithApiFx = createEffect((token: string | null) => setInterceptorToken(token));
 
@@ -35,6 +37,9 @@ export const $accessToken = createStore<string | null>(null)
     .on(loginFx.doneData, (_, payload) => payload.data.accessToken)
     .on(refreshAuthFx.doneData, (_, payload) => payload.data.accessToken)
     .reset(resetAccessToken);
+export const $myProfile = createStore<UserDto | null>(null)
+    .on(getMyProfileFx.doneData, (_, data) => data.data)
+    .reset([getMyProfileFx.fail, logoutFx.done]);
 
 export const $isLogoutSubmitting = logoutFx.pending;
 
@@ -74,4 +79,9 @@ sample({
 sample({
     clock: $accessToken,
     target: syncTokenWithApiFx,
+});
+
+sample({
+    clock: $accessToken,
+    target: getMyProfileFx,
 });

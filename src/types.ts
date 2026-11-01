@@ -11,7 +11,7 @@ export type Action = {
 };
 
 export type RouteObjectWithParams = RouteObject & {
-    protected?: boolean;
+    protected?: boolean | string[];
 };
 
 export type RequestInterceptor = (config: InternalAxiosRequestConfig) => InternalAxiosRequestConfig;

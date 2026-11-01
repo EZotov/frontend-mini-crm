@@ -1,4 +1,5 @@
 import MainPage from '~/pages/main/page';
+import ProfilePage from '~/pages/profile/page';
 import UsersPage from '~/pages/users/page';
 import {RouteObjectWithParams} from '~/types';
 
@@ -8,6 +9,11 @@ export const routesWithMenu: RouteObjectWithParams[] = [
     {
         index: true,
         Component: MainPage,
+        protected: true,
+    },
+    {
+        path: ROUTE_PATHS.PROFILE,
+        Component: ProfilePage,
         protected: true,
     },
     {

@@ -13,11 +13,6 @@ const navItems = [
         link: ROUTE_PATHS.MAIN_PAGE,
     },
     {
-        id: 'menu-item-users',
-        title: 'Пользователи',
-        link: ROUTE_PATHS.USERS_PAGE,
-    },
-    {
         id: 'menu-item-deals',
         title: 'Сделки',
         link: ROUTE_PATHS.DEALS_PAGE,

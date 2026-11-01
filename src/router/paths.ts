@@ -1,5 +1,6 @@
 export const ROUTE_PATHS = {
     MAIN_PAGE: '/',
+    PROFILE: '/profile',
     ACTIVITIES_PAGE: '/activities',
     DEALS_PAGE: '/deals',
     COMPANIES_PAGE: '/companies',

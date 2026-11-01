@@ -2,10 +2,10 @@ import {Stack, Typography} from '@mui/material';
 import {useUnit} from 'effector-react';
 import React from 'react';
 
-import {$accessToken, $isLogoutSubmitting, logoutEvent} from '~/models/auth';
+import {$accessToken} from '~/models/auth';
 import {SxMapProps} from '~/types';
 
-import {SmartButton} from '../smart-button';
+import {SignedInMenu} from './components/signed-in-menu';
 
 const styles: SxMapProps<'box' | 'headline'> = {
     box: {
@@ -25,16 +25,12 @@ const styles: SxMapProps<'box' | 'headline'> = {
 };
 
 export const Header = (): React.JSX.Element => {
-    const [logout, isLogoutSubmitting, accessToken] = useUnit([logoutEvent, $isLogoutSubmitting, $accessToken]);
+    const [accessToken] = useUnit([$accessToken]);
 
     return (
         <Stack component="header" direction="row" sx={styles.box} spacing={2}>
             <Typography sx={styles.headline}>Mini CRM</Typography>
-            {accessToken && (
-                <SmartButton variant="text" onClick={logout} isSubmitting={isLogoutSubmitting}>
-                    Выйти
-                </SmartButton>
-            )}
+            {accessToken && <SignedInMenu />}
         </Stack>
     );
 };

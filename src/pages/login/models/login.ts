@@ -1,17 +1,17 @@
 import {createEvent, sample} from 'effector';
 
 import {mainApi} from '~/api/services/main/endpoints';
-import {LoginRequestDto} from '~/api/services/main/operations';
-import {LoginResponseDto} from '~/api/services/main/schemas';
+import {LoginRequestBody} from '~/api/services/main/operations';
+import {LoginDto} from '~/api/services/main/schemas';
+import {internalRedirectFx} from '~/models/redirects';
 import {ROUTE_PATHS} from '~/router/paths';
 import {createApiEffect} from '~/utils/effector/api-effect';
-import {internalRedirectFx} from '~/models/redirects';
 
 //Events
-export const loginEvent = createEvent<LoginRequestDto>();
+export const loginEvent = createEvent<LoginRequestBody>();
 
 // Effects
-export const loginFx = createApiEffect<LoginRequestDto, LoginResponseDto>((payload) => mainApi.signIn(payload));
+export const loginFx = createApiEffect<LoginRequestBody, LoginDto>((payload) => mainApi.signIn(payload));
 
 // Stores
 export const $isLoginSubmitting = loginFx.pending;

@@ -28,6 +28,15 @@ class MainApiService extends CoreApiClient {
         return this.post(`/v1/auth/logout`);
     }
 
+    //Me
+    getMyProfile() {
+        return this.get<void, UserDto>(`/v1/users/me`);
+    }
+
+    updateMyProfile() {
+        return this.put<void, CreateOrUpdateDto>(`/v1/users/me`);
+    }
+
     // Users
     getUsersList(query: GetUsersQuery) {
         return this.get<GetUsersQuery, UserDto[]>(`/v1/users`, query);
