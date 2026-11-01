@@ -1,6 +1,6 @@
 import MainPage from '~/pages/main/page';
-import ProfilePage from '~/pages/profile/page';
-import UsersPage from '~/pages/users/page';
+import ProfilePage from '~/pages/settings/profile/page';
+import UsersPage from '~/pages/settings/users/page';
 import {RouteObjectWithParams} from '~/types';
 
 import {ROUTE_PATHS} from './paths';
