@@ -5,7 +5,10 @@
       {
         "addSid": true,
         "addLoc": true,
-        "factories": ["src/utils/effector/model-factory/loadableModelFactory"]
+        "factories": [
+          "src/utils/effector/model-factory/loadableModelFactory",
+          "src/utils/effector/model-factory/paginationModelFactory"
+        ]
       }
     ]
   ]
