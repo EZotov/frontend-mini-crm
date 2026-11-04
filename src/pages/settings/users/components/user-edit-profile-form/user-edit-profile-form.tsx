@@ -8,14 +8,9 @@ import {UserFormSchema, UserFormType} from './schema';
 interface UserEditProfileFormProps {
     onSubmit: SubmitHandler<UserFormType>;
     defaultValues?: UserFormType;
-    isSubmitting?: boolean;
 }
 
-export const UserEditProfileForm = ({
-    onSubmit,
-    defaultValues,
-    isSubmitting,
-}: UserEditProfileFormProps): React.JSX.Element => {
+export const UserEditProfileForm = ({onSubmit, defaultValues}: UserEditProfileFormProps): React.JSX.Element => {
     const form = useFormController<UserFormType>(UserFormSchema, {
         action: FORM_ACTION.EDIT,
         defaultValues: defaultValues ?? {
@@ -24,7 +19,7 @@ export const UserEditProfileForm = ({
     });
 
     return (
-        <FormController<UserFormType> {...form} onSubmit={onSubmit} hideCancelButton isSubmitting={isSubmitting}>
+        <FormController<UserFormType> {...form} onSubmit={onSubmit} hideCancelButton>
             <TextFieldController<UserFormType> name="name" label="Какой-то текст" fullWidth />
         </FormController>
     );

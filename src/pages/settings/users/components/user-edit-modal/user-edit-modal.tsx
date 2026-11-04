@@ -4,7 +4,7 @@ import {SubmitHandler} from 'react-hook-form';
 
 import {Modal} from '~/components/modal';
 
-import {$isLoadingUser, $isUpdateUserSubmitting, $user, updateUserEvent} from '../../models/users';
+import {$isLoadingUser, $user, updateUserEvent} from '../../models/users';
 import {formDataToUserPayload, userDtoToFormData, UserEditProfileForm, UserFormType} from '../user-edit-profile-form';
 
 interface UserEditModalProps {
@@ -13,12 +13,7 @@ interface UserEditModalProps {
 }
 
 export const UserEditModal = ({isOpen, onClose}: UserEditModalProps): React.JSX.Element => {
-    const [user, isLoadingUser, updateUser, isUpdateUserSubmitting] = useUnit([
-        $user,
-        $isLoadingUser,
-        updateUserEvent,
-        $isUpdateUserSubmitting,
-    ]);
+    const [user, isLoadingUser, updateUser] = useUnit([$user, $isLoadingUser, updateUserEvent]);
 
     const defaultValues = useMemo(() => userDtoToFormData(user), [user]);
 
@@ -32,11 +27,7 @@ export const UserEditModal = ({isOpen, onClose}: UserEditModalProps): React.JSX.
             type="FORM_MODAL"
             isLoading={isLoadingUser}
         >
-            <UserEditProfileForm
-                onSubmit={handleSubmit}
-                defaultValues={defaultValues}
-                isSubmitting={isUpdateUserSubmitting}
-            />
+            <UserEditProfileForm onSubmit={handleSubmit} defaultValues={defaultValues} />
         </Modal>
     );
 };

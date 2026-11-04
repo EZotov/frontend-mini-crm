@@ -17,7 +17,6 @@ interface FormControllerProps<FV extends FieldValues> extends FormProviderProps<
     hideCancelButton?: boolean;
     hideActions?: boolean;
     customActions?: React.JSX.Element;
-    isSubmitting?: boolean;
 }
 
 /**
@@ -38,12 +37,11 @@ export const FormController = <FV extends FieldValues = FieldValues>({
     ...formProviderProps
 }: FormControllerProps<FV>): React.JSX.Element => {
     const {
-        formState: {isSubmitting: isFormSubmitting, isDirty, isValid},
+        formState: {isSubmitting, isDirty, isValid},
         handleSubmit,
     } = formProviderProps;
 
     const isDirtyState = disableIsDirty ? false : !isDirty;
-    const isSubmitting = isFormSubmitting || formProviderProps.isSubmitting;
 
     return (
         <FormProvider<FV> {...formProviderProps}>
