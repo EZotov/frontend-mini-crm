@@ -1,23 +1,15 @@
 import {Stack} from '@mui/material';
 
-import {Action, PageLayout} from '~/components/layout/page-layout';
+import {ActionGetter, PageLayout} from '~/components/layout/page-layout';
 import {useModal} from '~/hooks/use-modal';
 
 import {UserEditModal} from '../users/components/user-edit-modal';
 import {AvatarSection} from './avatar-section';
+import {PROFILE_MODAL_TYPE} from './consts';
+import {ProfileModalData, ProfileModalHandler} from './types';
 import {UserInfoSection} from './user-info-section';
 
-type ModalDataUserEdit = {
-    type: 'USER_EDIT';
-};
-
-type ModalDataChangePassword = {
-    type: 'CHANGE_PASSWORD';
-};
-
-type ModalData = ModalDataUserEdit | ModalDataChangePassword;
-
-const getAction = (onOpenModal: (data: ModalData) => void): Action[] => [
+const getAction: ActionGetter<ProfileModalHandler> = (onOpenModal) => [
     {
         title: 'Редактировать свой профиль',
         onClick: () => onOpenModal({type: 'USER_EDIT'}),
@@ -31,7 +23,7 @@ const getAction = (onOpenModal: (data: ModalData) => void): Action[] => [
 ];
 
 const ProfilePage = (): React.JSX.Element => {
-    const {isOpen, modalData, onOpenModal, onCloseModal} = useModal<ModalData>();
+    const {isOpen, modalData, onOpenModal, onCloseModal} = useModal<ProfileModalData>();
 
     return (
         <PageLayout pageTitle="Профиль" otherActions={getAction(onOpenModal)}>
@@ -40,8 +32,10 @@ const ProfilePage = (): React.JSX.Element => {
                 <UserInfoSection />
             </Stack>
 
-            {modalData.type === 'USER_EDIT' && <UserEditModal isOpen={isOpen} onClose={onCloseModal} />}
-            {modalData.type === 'CHANGE_PASSWORD' && <></>}
+            {modalData.type === PROFILE_MODAL_TYPE.USER_EDIT && (
+                <UserEditModal isOpen={isOpen} onClose={onCloseModal} />
+            )}
+            {modalData.type === PROFILE_MODAL_TYPE.CHANGE_PASSWORD && <></>}
         </PageLayout>
     );
 };

@@ -7,3 +7,5 @@ export type Action = {
     to?: To;
     variant?: ButtonProps['variant'];
 };
+
+export type ActionGetter<T> = (data: T) => Action[];
