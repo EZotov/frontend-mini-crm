@@ -84,7 +84,7 @@ const UsersPage = (): React.JSX.Element => {
                             </Box>
                             <Box sx={styles.infoContainer}>
                                 <CardContent sx={{flexGrow: 1}}>
-                                    <Typography component="h3" sx={{fontWeight: 800, fontSize: 20}}>
+                                    <Typography component="h3" variant="h3">
                                         {`${user.lastName} ${user.firstName} ${user.patronymic}`}
                                     </Typography>
 
