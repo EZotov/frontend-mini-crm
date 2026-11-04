@@ -6,7 +6,7 @@ import React, {useRef, useState} from 'react';
 import {Link} from 'react-router-dom';
 
 import {$isLogoutSubmitting, $myProfile, logoutEvent} from '~/models/auth';
-import {SxMapProps} from '~/types';
+import type {SxMapProps} from '~/styles/types';
 
 import {getSettingsMenu} from '../../consts';
 

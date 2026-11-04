@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 import Wallpaper from '~/assets/wallpaper.jpg';
 import {Container} from '~/components/container';
 import {PageLayout} from '~/components/layout/page-layout';
-import {SxMapProps} from '~/types';
+import type {SxMapProps} from '~/styles/types';
 
 const styles: SxMapProps<'cardLink' | 'cardContainer' | 'cardIcon' | 'banner' | 'bannerTitle'> = {
     cardLink: {

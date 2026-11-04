@@ -1,6 +1,6 @@
 import {Box, BoxProps, SxProps, Typography} from '@mui/material';
 
-import {SxMapProps} from '~/types';
+import {SxMapProps} from '~/styles/types';
 
 const styles: SxMapProps<'container'> = {
     container: {

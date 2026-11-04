@@ -1,4 +1,4 @@
-import type {AxiosResponse} from 'axios';
+import type {AxiosResponse, InternalAxiosRequestConfig} from 'axios';
 
 export type ApiErrorResponse = {
     code?: string | null;
@@ -16,3 +16,5 @@ export type ApiAxiosError = ApiErrorResponse & {
         status: AxiosResponse['status'];
     };
 };
+
+export type RequestInterceptor = (config: InternalAxiosRequestConfig) => InternalAxiosRequestConfig;

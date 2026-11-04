@@ -3,7 +3,7 @@ import {useUnit} from 'effector-react';
 import React from 'react';
 
 import {$accessToken} from '~/models/auth';
-import {SxMapProps} from '~/types';
+import type {SxMapProps} from '~/styles/types';
 
 import {SignedInMenu} from './components/signed-in-menu';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Container} from '~/components/container';
-import {SxMapProps} from '~/types';
+import type {SxMapProps} from '~/styles/types';
 
 import {RegistrationForm} from './components/registration-form';
 

@@ -1,4 +1,4 @@
-import {RequestInterceptor} from '~/types';
+import type {RequestInterceptor} from '../types';
 
 let currentToken: string | null = null;
 

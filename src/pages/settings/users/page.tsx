@@ -8,7 +8,7 @@ import {PageLayout} from '~/components/layout/page-layout';
 import {Pagination} from '~/components/pagination';
 import {SmartButton} from '~/components/smart-button';
 import {ROUTE_PATHS} from '~/router/paths';
-import {SxMapProps} from '~/types';
+import type {SxMapProps} from '~/styles/types';
 
 import {UserEditModal} from './components/user-edit-modal';
 import {

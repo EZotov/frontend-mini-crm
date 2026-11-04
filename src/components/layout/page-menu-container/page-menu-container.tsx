@@ -1,7 +1,7 @@
 import {Box} from '@mui/material';
 import {Outlet} from 'react-router-dom';
 
-import {SxMapProps} from '~/types';
+import type {SxMapProps} from '~/styles/types';
 
 import {Container} from '../../container';
 import {NavigationMenu} from '../../navigation-menu';

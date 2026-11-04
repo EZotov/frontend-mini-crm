@@ -1,10 +1,10 @@
 import {PageMenuContainer} from '~/components/layout/page-menu-container';
 import LoginPage from '~/pages/login/page';
 import RegistrationPage from '~/pages/registration/page';
-import {RouteObjectWithParams} from '~/types';
 
 import {routesWithMenu} from './menu-routes';
 import {ROUTE_PATHS} from './paths';
+import {RouteObjectWithParams} from './types';
 
 export const layoutRoutes: RouteObjectWithParams[] = [
     {

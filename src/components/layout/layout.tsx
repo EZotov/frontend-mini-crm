@@ -2,7 +2,7 @@ import {Box} from '@mui/material';
 import {Outlet} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 
-import {SxMapProps} from '~/types';
+import type {SxMapProps} from '~/styles/types';
 
 import {Header} from './header';
 

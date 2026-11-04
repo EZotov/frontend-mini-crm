@@ -1,7 +1,7 @@
 import {Button} from '@mui/material';
 import {NavLink, To} from 'react-router-dom';
 
-import {SxMapProps} from '~/types';
+import type {SxMapProps} from '~/styles/types';
 
 const styles: SxMapProps<'navItem'> = {
     navItem: {
