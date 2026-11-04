@@ -12,7 +12,12 @@ const styles: SxMapProps<'pageMenuContainer' | 'innerPageContainer'> = {
         display: 'flex',
         flexDirection: 'row',
     },
-    innerPageContainer: {flexGrow: 1, borderRadius: 0, minWidth: 0, padding: '36px 24px'},
+    innerPageContainer: {
+        flexGrow: 1,
+        borderRadius: 0,
+        minWidth: 0,
+        padding: '36px 24px',
+    },
 };
 
 export const PageMenuContainer = (): React.JSX.Element => {

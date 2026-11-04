@@ -14,7 +14,7 @@ export const routesWithMenu: RouteObjectWithParams[] = [
     {
         path: ROUTE_PATHS.PROFILE,
         Component: ProfilePage,
-        protected: true,
+        // protected: true,
     },
     {
         path: ROUTE_PATHS.USERS_PAGE,

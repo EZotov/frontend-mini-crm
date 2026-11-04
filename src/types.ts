@@ -1,14 +1,6 @@
-import type {To} from 'react-router-dom';
-
 export type PaginationState = {
     pageNum: number;
     pageSize: number;
-};
-
-export type Action = {
-    title: string;
-    onClick?: React.MouseEventHandler;
-    to?: To;
 };
 
 type Params = Record<string, unknown>;
