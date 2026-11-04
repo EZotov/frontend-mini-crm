@@ -73,7 +73,7 @@ const UsersPage = (): React.JSX.Element => {
         <PageLayout
             pageTitle="Пользователи системы"
             createButtonTitle="Создать пользователя"
-            to={ROUTE_PATHS.USERS_CREATE_PAGE}
+            createButtonTo={ROUTE_PATHS.USERS_CREATE_PAGE}
         >
             <Container isEmptyList={!usersCount} isLoading={isLoadingUserList}>
                 <Stack spacing={3}>
