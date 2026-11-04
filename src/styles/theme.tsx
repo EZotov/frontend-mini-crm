@@ -3,9 +3,11 @@ import {createTheme} from '@mui/material/styles';
 declare module '@mui/material/styles' {
     interface Palette {
         transparentBackground: string;
+        lightShadow: string;
     }
     interface PaletteOptions {
         transparentBackground?: string;
+        lightShadow?: string;
     }
 }
 
@@ -20,6 +22,7 @@ export const theme = createTheme({
             main: 'rgb(61, 73, 80)',
         },
         transparentBackground: ' #e9e9e957',
+        lightShadow: '#ffffffb9',
     },
     // 2. Настройка шрифтов
     typography: {

@@ -22,7 +22,7 @@ const styles: SxMapProps<'cardLink' | 'cardContainer' | 'cardIcon' | 'banner' | 
         transition: 'box-shadow 0.25s ease',
         boxShadow: 'none',
         '&:hover': {
-            boxShadow: '0px 0px 15px 0px #ffffffb9',
+            boxShadow: '0px 0px 15px 0px lightShadow',
         },
     },
     cardIcon: {
@@ -34,7 +34,7 @@ const styles: SxMapProps<'cardLink' | 'cardContainer' | 'cardIcon' | 'banner' | 
         width: '100%',
         height: 200,
         borderRadius: 4,
-        boxShadow: '0px 0px 15px 0px #ffffffb9',
+        boxShadow: '0px 0px 15px 0px lightShadow',
     },
     bannerTitle: {
         position: 'absolute',
