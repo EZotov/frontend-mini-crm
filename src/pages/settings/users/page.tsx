@@ -4,6 +4,7 @@ import {useGate, useUnit} from 'effector-react';
 import {useState} from 'react';
 
 import {Container} from '~/components/container';
+import {LabelList} from '~/components/label-list';
 import {PageLayout} from '~/components/layout/page-layout';
 import {Pagination} from '~/components/pagination';
 import {SmartButton} from '~/components/smart-button';
@@ -87,41 +88,30 @@ const UsersPage = (): React.JSX.Element => {
                                     <Typography component="h3" variant="h3">
                                         {`${user.lastName} ${user.firstName} ${user.patronymic}`}
                                     </Typography>
-
-                                    <Stack direction="row" spacing={4} sx={{marginTop: 2}}>
-                                        {user?.role && (
-                                            <Stack direction="column" spacing={0.5}>
-                                                <Typography component="label" sx={{fontWeight: 600}}>
-                                                    Роль:
-                                                </Typography>
-                                                <Typography component="p">{ROLE_TRANSLATE_MAP[user.role]}</Typography>
-                                            </Stack>
-                                        )}
-                                        <Stack direction="column" spacing={0.5} sx={{marginTop: 2}}>
-                                            <Typography component="label" sx={{fontWeight: 600}}>
-                                                Почта:
-                                            </Typography>
-                                            <Typography component="p">{user.email}</Typography>
-                                        </Stack>
-
-                                        <Stack direction="column" spacing={0.5} sx={{marginTop: 2}}>
-                                            <Typography component="label" sx={{fontWeight: 600}}>
-                                                Состояние:
-                                            </Typography>
-                                            <Typography component="p">
-                                                {user.isBlocked ? 'Заблокирован' : 'Без ограничений'}
-                                            </Typography>
-                                        </Stack>
-
-                                        <Stack direction="column" spacing={0.5} sx={{marginTop: 2}}>
-                                            <Typography component="label" sx={{fontWeight: 600}}>
-                                                Идентификатор:
-                                            </Typography>
-                                            <Typography component="p">{user.id}</Typography>
-                                        </Stack>
-                                    </Stack>
+                                    <LabelList
+                                        direction="row"
+                                        spacing={4}
+                                        items={[
+                                            {
+                                                label: 'Роль',
+                                                text: ROLE_TRANSLATE_MAP[user?.role ?? ''],
+                                                visible: !!user?.role,
+                                            },
+                                            {
+                                                label: 'Почта',
+                                                text: user.email,
+                                            },
+                                            {
+                                                label: 'Состояние',
+                                                text: user.isBlocked ? 'Заблокирован' : 'Без ограничений',
+                                            },
+                                            {
+                                                label: 'Идентификатор',
+                                                text: user.id,
+                                            },
+                                        ]}
+                                    />
                                 </CardContent>
-
                                 <CardActions>
                                     <Stack spacing={1}>
                                         <Button size="medium" onClick={() => setModelOpen(true)}>
