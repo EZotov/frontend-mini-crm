@@ -18,6 +18,11 @@ const navItems = [
         link: ROUTE_PATHS.DEALS_PAGE,
     },
     {
+        id: 'menu-item-filters',
+        title: 'Воронки',
+        link: ROUTE_PATHS.DEALS_PAGE,
+    },
+    {
         id: 'menu-item-activities',
         title: 'Задачи',
         link: ROUTE_PATHS.ACTIVITIES_PAGE,
@@ -44,7 +49,7 @@ export const NavigationMenu = (): React.JSX.Element => {
                 paddingLeft: 3,
                 paddingRight: 3,
                 borderRadius: 0,
-                minWidth: 0,
+                minWidth: 160,
                 padding: 0,
                 height: 'calc(100vh - 62px)',
                 flexBasis: '15%',
