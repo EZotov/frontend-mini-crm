@@ -4,7 +4,7 @@ import {useGate, useUnit} from 'effector-react';
 import {useState} from 'react';
 
 import {Container} from '~/components/container';
-import {InnerPage} from '~/components/inner-page';
+import {PageLayout} from '~/components/layout/page-layout';
 import {Pagination} from '~/components/pagination';
 import {SmartButton} from '~/components/smart-button';
 import {ROUTE_PATHS} from '~/router/paths';
@@ -70,7 +70,7 @@ const UsersPage = (): React.JSX.Element => {
         ]);
 
     return (
-        <InnerPage
+        <PageLayout
             pageTitle="Пользователи системы"
             createButtonTitle="Создать пользователя"
             to={ROUTE_PATHS.USERS_CREATE_PAGE}
@@ -145,7 +145,7 @@ const UsersPage = (): React.JSX.Element => {
             </Container>
 
             <UserEditModal isOpen={isModalOpen} onClose={() => setModelOpen(false)} />
-        </InnerPage>
+        </PageLayout>
     );
 };
 

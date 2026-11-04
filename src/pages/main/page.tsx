@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 import Wallpaper from '~/assets/wallpaper.jpg';
 import {Container} from '~/components/container';
-import {InnerPage} from '~/components/inner-page';
+import {PageLayout} from '~/components/layout/page-layout';
 import {SxMapProps} from '~/types';
 
 const styles: SxMapProps<'cardLink' | 'cardContainer' | 'cardIcon' | 'banner' | 'bannerTitle'> = {
@@ -52,7 +52,7 @@ const cardSizes: GridProps['size'] = {xs: 12, md: 6, lg: 4};
 
 const MainPage = () => {
     return (
-        <InnerPage pageTitle="Главная">
+        <PageLayout pageTitle="Главная">
             <Box sx={{position: 'relative'}}>
                 <Box component="img" src={Wallpaper} sx={styles.banner} />
                 <Typography sx={styles.bannerTitle} align="center">
@@ -105,7 +105,7 @@ const MainPage = () => {
                     </Button>
                 </Grid>
             </Grid>
-        </InnerPage>
+        </PageLayout>
     );
 };
 

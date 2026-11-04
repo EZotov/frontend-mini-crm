@@ -4,7 +4,7 @@ import {ToastContainer} from 'react-toastify';
 
 import {SxMapProps} from '~/types';
 
-import {Header} from '../header';
+import {Header} from './header';
 
 const styles: SxMapProps<'main'> = {
     main: {
@@ -27,7 +27,6 @@ export const Layout = () => {
             <Box sx={styles.main} component="main">
                 <Outlet />
             </Box>
-            <footer></footer>
             <ToastContainer />
         </>
     );

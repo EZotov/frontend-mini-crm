@@ -3,8 +3,9 @@ import {Outlet} from 'react-router-dom';
 
 import {SxMapProps} from '~/types';
 
-import {Container} from '../container';
-import {NavigationMenu} from '../navigation-menu/navigation-menu';
+import {Container} from '../../container';
+import {NavigationMenu} from '../../navigation-menu';
+import {navItems} from './nav-items';
 
 const styles: SxMapProps<'pageMenuContainer' | 'innerPageContainer'> = {
     pageMenuContainer: {
@@ -17,7 +18,7 @@ const styles: SxMapProps<'pageMenuContainer' | 'innerPageContainer'> = {
 export const PageMenuContainer = (): React.JSX.Element => {
     return (
         <Box sx={styles.pageMenuContainer}>
-            <NavigationMenu />
+            <NavigationMenu navItems={navItems} />
             <Container sx={styles.innerPageContainer}>
                 <Outlet />
             </Container>

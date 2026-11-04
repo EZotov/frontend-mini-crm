@@ -1,4 +1,4 @@
-import {PageMenuContainer} from '~/components/page-menu-container';
+import {PageMenuContainer} from '~/components/layout/page-menu-container';
 import LoginPage from '~/pages/login/page';
 import RegistrationPage from '~/pages/registration/page';
 import {RouteObjectWithParams} from '~/types';

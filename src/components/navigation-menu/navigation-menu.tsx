@@ -2,44 +2,15 @@ import {Stack, Typography} from '@mui/material';
 import React from 'react';
 
 import {Container} from '~/components/container';
-import {ROUTE_PATHS} from '~/router/paths';
 
 import {NavigationItem} from './navigation-item';
+import type {NavItem} from './types';
 
-const navItems = [
-    {
-        id: 'menu-item-main',
-        title: 'Главная',
-        link: ROUTE_PATHS.MAIN_PAGE,
-    },
-    {
-        id: 'menu-item-deals',
-        title: 'Сделки',
-        link: ROUTE_PATHS.DEALS_PAGE,
-    },
-    {
-        id: 'menu-item-filters',
-        title: 'Воронки',
-        link: ROUTE_PATHS.DEALS_PAGE,
-    },
-    {
-        id: 'menu-item-activities',
-        title: 'Задачи',
-        link: ROUTE_PATHS.ACTIVITIES_PAGE,
-    },
-    {
-        id: 'menu-item-companies',
-        title: 'Компании',
-        link: ROUTE_PATHS.COMPANIES_PAGE,
-    },
-    {
-        id: 'menu-item-customers',
-        title: 'Заказчики',
-        link: ROUTE_PATHS.CUSTOMERS_PAGE,
-    },
-];
+interface NavigationMenuProps {
+    navItems: NavItem[];
+}
 
-export const NavigationMenu = (): React.JSX.Element => {
+export const NavigationMenu = ({navItems}: NavigationMenuProps): React.JSX.Element => {
     return (
         <Container
             component="aside"

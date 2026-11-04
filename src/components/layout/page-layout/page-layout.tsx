@@ -37,7 +37,7 @@ interface InnerPageProps {
  * Компонент-обёртка страницы с функциональным баром
  * @returns
  */
-export const InnerPage = ({
+export const PageLayout = ({
     pageTitle = 'Название страницы',
     createButtonTitle = '',
     to,
