@@ -26,7 +26,7 @@ export const LabelList = ({
         <Stack component="ul" direction={direction} spacing={spacing}>
             {items.map(({visible = true, ...item}) =>
                 visible ? (
-                    <Stack component="li" direction={labelDirection} spacing={0.5}>
+                    <Stack key={`label-list-${item.label}`} component="li" direction={labelDirection} spacing={0.5}>
                         <Typography component="label" sx={{fontWeight: 600}}>
                             {item.label}:
                         </Typography>
