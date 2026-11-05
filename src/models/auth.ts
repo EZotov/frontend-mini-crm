@@ -42,6 +42,7 @@ export const $myProfile = createStore<UserDto | null>(null)
     .reset([getMyProfileFx.fail, logoutFx.done]);
 
 export const $isLogoutSubmitting = logoutFx.pending;
+export const $isMyProfileLoading = getMyProfileFx.pending;
 
 // Samples
 

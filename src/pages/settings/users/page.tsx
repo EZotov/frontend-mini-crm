@@ -10,7 +10,9 @@ import {Pagination} from '~/components/pagination';
 import {SmartButton} from '~/components/smart-button';
 import {ROUTE_PATHS} from '~/router/paths';
 import type {SxMapProps} from '~/styles/types';
+import {getFullName} from '~/utils/helpers';
 
+import {ROLE_TRANSLATE_MAP} from '../consts';
 import {UserEditModal} from './components/user-edit-modal';
 import {
     $isDeleteUserSubmitting,
@@ -22,12 +24,6 @@ import {
     setPaginationEvent,
     userPageGate,
 } from './models/users';
-
-const ROLE_TRANSLATE_MAP: Record<string, string> = {
-    ADMIN: 'Администратор',
-    MANAGER: 'Менеджер',
-    USER: 'Пользователь',
-};
 
 const styles: SxMapProps<'card' | 'accountSection' | 'infoContainer'> = {
     card: {
@@ -76,7 +72,7 @@ const UsersPage = (): React.JSX.Element => {
             createButtonTitle="Создать пользователя"
             createButtonTo={ROUTE_PATHS.USERS_CREATE_PAGE}
         >
-            <Container isEmptyList={!usersCount} isLoading={isLoadingUserList}>
+            <Container isEmptyContent={!usersCount} isLoading={isLoadingUserList}>
                 <Stack spacing={3}>
                     {users?.map((user) => (
                         <Card sx={styles.card}>
@@ -86,7 +82,11 @@ const UsersPage = (): React.JSX.Element => {
                             <Box sx={styles.infoContainer}>
                                 <CardContent sx={{flexGrow: 1}}>
                                     <Typography component="h3" variant="h3">
-                                        {`${user.lastName} ${user.firstName} ${user.patronymic}`}
+                                        {getFullName({
+                                            lastName: user?.lastName,
+                                            firstName: user?.firstName,
+                                            patronymic: user?.patronymic,
+                                        })}
                                     </Typography>
                                     <LabelList
                                         direction="row"

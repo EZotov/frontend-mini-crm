@@ -17,23 +17,24 @@ interface ContainerProps extends BoxProps {
     sx?: SxProps;
     children?: React.ReactNode;
     isLoading?: boolean;
-    isContentContainer?: boolean;
-    isEmptyList?: boolean;
+    isEmptyContent?: boolean;
     emptyListMessage?: string;
     smallPadding?: boolean;
+    isTransparent?: boolean;
 }
 
 export const Container = ({
     sx,
     children,
     isLoading = false,
-    isEmptyList = false,
+    isEmptyContent = false,
     emptyListMessage = 'Список элементов пуст',
     smallPadding = false,
+    isTransparent = false,
     ...props
 }: ContainerProps) => {
     const boxStyles = {
-        ...styles.container,
+        ...(isTransparent ? {padding: 4} : styles.container),
         ...(smallPadding && {padding: 2}),
         ...(sx && sx),
     } as SxProps;
@@ -43,7 +44,7 @@ export const Container = ({
             return <>Загрузка...</>;
         }
 
-        if (isEmptyList) {
+        if (isEmptyContent) {
             return (
                 <Typography align="center" color="primary">
                     {emptyListMessage}

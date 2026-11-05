@@ -5,6 +5,7 @@ import {useModal} from '~/hooks/use-modal';
 
 import {UserEditModal} from '../users/components/user-edit-modal';
 import {AvatarSection} from './avatar-section';
+import {UserChangePasswordModal} from './components/user-change-password-modal';
 import {PROFILE_MODAL_TYPE} from './consts';
 import {ProfileModalData, ProfileModalHandler} from './types';
 import {UserInfoSection} from './user-info-section';
@@ -35,7 +36,9 @@ const ProfilePage = (): React.JSX.Element => {
             {modalData.type === PROFILE_MODAL_TYPE.USER_EDIT && (
                 <UserEditModal isOpen={isOpen} onClose={onCloseModal} />
             )}
-            {modalData.type === PROFILE_MODAL_TYPE.CHANGE_PASSWORD && <></>}
+            {modalData.type === PROFILE_MODAL_TYPE.CHANGE_PASSWORD && (
+                <UserChangePasswordModal isOpen={isOpen} onClose={onCloseModal} />
+            )}
         </PageLayout>
     );
 };

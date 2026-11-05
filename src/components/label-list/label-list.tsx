@@ -3,13 +3,13 @@ import React from 'react';
 
 interface Label {
     label: string;
-    text: string;
+    text: string | number;
     visible?: boolean;
 }
 
 interface LabelListProps {
     items: Label[];
-    direction: StackProps['direction'];
+    direction?: StackProps['direction'];
     labelDirection?: StackProps['direction'];
     spacing?: StackProps['spacing'];
 }

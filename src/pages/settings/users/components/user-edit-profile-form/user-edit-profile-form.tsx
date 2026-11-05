@@ -1,16 +1,10 @@
-import {SubmitHandler} from 'react-hook-form';
-
 import {FORM_ACTION, FormController, useFormController} from '~/form/form-controller';
 import {TextFieldController} from '~/form/input-controllers';
+import type {FormBaseProps} from '~/types';
 
 import {UserFormSchema, UserFormType} from './schema';
 
-interface UserEditProfileFormProps {
-    onSubmit: SubmitHandler<UserFormType>;
-    defaultValues?: UserFormType;
-}
-
-export const UserEditProfileForm = ({onSubmit, defaultValues}: UserEditProfileFormProps): React.JSX.Element => {
+export const UserEditProfileForm = ({onSubmit, defaultValues}: FormBaseProps<UserFormType>): React.JSX.Element => {
     const form = useFormController<UserFormType>(UserFormSchema, {
         action: FORM_ACTION.EDIT,
         defaultValues: defaultValues ?? {
