@@ -17,7 +17,8 @@ export const UserEditModal = ({isOpen, onClose}: UserEditModalProps): React.JSX.
 
     const defaultValues = useMemo(() => userDtoToFormData(user), [user]);
 
-    const handleSubmit: SubmitHandler<UserFormType> = (data) => updateUser(formDataToUserPayload(data));
+    const handleSubmit: SubmitHandler<UserFormType> = (data) =>
+        updateUser({id: user?.id ?? '', ...formDataToUserPayload(data)});
 
     return (
         <Modal

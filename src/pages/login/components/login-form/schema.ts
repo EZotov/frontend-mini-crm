@@ -1,12 +1,7 @@
 import zod from 'zod';
 
 export const LoginSchema = zod.object({
-    email: zod
-        .string({
-            error: 'Email обязателен для заполнения',
-        })
-        .min(1, {message: 'Поле не может быть пустым'})
-        .email({message: 'Некорректный формат email адреса'}),
+    email: zod.email({message: 'Некорректный формат email адреса'}).min(1, {message: 'Поле не может быть пустым'}),
     password: zod.string({error: 'Email обязателен для заполнения'}).min(1, {message: 'Поле не может быть пустым'}),
 });
 
