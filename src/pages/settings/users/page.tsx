@@ -12,7 +12,7 @@ import {ROUTE_PATHS} from '~/router/paths';
 import type {SxMapProps} from '~/styles/types';
 import {getFullName} from '~/utils/helpers';
 
-import {ROLE_TRANSLATE_MAP} from '../consts';
+import {ROLE_TRANSLATE_MAP} from '../../../consts/roles';
 import {UserEditModal} from './components/user-edit-modal';
 import {
     $isDeleteUserSubmitting,
@@ -133,10 +133,10 @@ const UsersPage = (): React.JSX.Element => {
                                     </Stack>
                                 </CardActions>
                             </Box>
-                            <ConfirmModal {...confirmModalProps} />
                         </Card>
                     ))}
                 </Stack>
+                <ConfirmModal {...confirmModalProps} />
                 <Pagination totalCount={usersCount} paginationState={paginationState} onChange={setPagination} />
             </Container>
 

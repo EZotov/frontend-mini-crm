@@ -8,7 +8,7 @@ import {LabelList} from '~/components/label-list';
 import {$isMyProfileLoading, $myProfile} from '~/models/auth';
 import {getFullName} from '~/utils/helpers';
 
-import {ROLE_TRANSLATE_MAP} from '../../../consts';
+import {ROLE_TRANSLATE_MAP} from '../../../../../consts/roles';
 
 export const UserInfoSection = (): React.JSX.Element => {
     const [myProfile, isMyProfileLoading] = useUnit([$myProfile, $isMyProfileLoading]);

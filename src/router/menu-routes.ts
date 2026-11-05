@@ -1,5 +1,5 @@
 import MainPage from '~/pages/main/page';
-import {ROLES} from '~/pages/settings/consts';
+import {ROLES} from '~/consts/roles';
 import ProfilePage from '~/pages/settings/profile/page';
 import UsersPage from '~/pages/settings/users/page';
 
