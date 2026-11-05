@@ -8,7 +8,7 @@ import type {
     UpdateUserBody,
     UpdateUserRequest,
 } from './operations';
-import type {CreateOrUpdateDto, LoginDto, RefreshTokenDto, RegistrationDto, UserDto} from './schemas';
+import type {CreateOrUpdateDto, LoginDto, RefreshTokenDto, RegistrationDto, RoleDto, UserDto} from './schemas';
 
 class MainApiService extends CoreApiClient {
     // Auth
@@ -26,6 +26,11 @@ class MainApiService extends CoreApiClient {
 
     logout() {
         return this.post(`/v1/auth/logout`);
+    }
+
+    // Roles
+    getRoles() {
+        return this.get<void, RoleDto[]>(`/v1/roles`);
     }
 
     //Me

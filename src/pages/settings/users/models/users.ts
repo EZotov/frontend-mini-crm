@@ -8,6 +8,8 @@ import {GateWithParams} from '~/types';
 import {createApiEffect} from '~/utils/effector/api-effect';
 import {paginationModelFactory} from '~/utils/effector/model-factory';
 
+import {getRolesFx} from './roles';
+
 // Gates
 export const userPageGate = createGate<GateWithParams<GetUsersQuery>>();
 
@@ -44,7 +46,7 @@ sample({
     clock: userPageGate.open,
     source: $paginationState,
     fn: (paginationState) => paginationState,
-    target: getUsersFx,
+    target: [getUsersFx, getRolesFx],
 });
 
 // При изменении пагинации вызываем эффект

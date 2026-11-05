@@ -10,5 +10,8 @@ export type RefreshTokenDto = components['schemas']['RefreshAccessTokenDto'];
 // Registration
 export type RegistrationDto = components['schemas']['TokensDto'];
 
+// Roles
+export type RoleDto = components['schemas']['Role'];
+
 // Users
 export type UserDto = components['schemas']['UserDto'];

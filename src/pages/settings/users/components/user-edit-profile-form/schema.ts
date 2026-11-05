@@ -5,10 +5,12 @@ export const UserFormSchema = zod.object({
     lastName: zod.string(),
     firstName: zod.string(),
     patronymic: zod.string(),
-    role: zod.object({
-        value: zod.string(),
-        label: zod.string().optional(),
-    }),
+    role: zod
+        .object({
+            value: zod.string(),
+            label: zod.string().optional(),
+        })
+        .optional(),
 });
 
 export type UserFormType = zod.infer<typeof UserFormSchema>;

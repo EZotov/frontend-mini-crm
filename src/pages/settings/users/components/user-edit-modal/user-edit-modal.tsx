@@ -4,6 +4,7 @@ import {SubmitHandler} from 'react-hook-form';
 
 import {Modal} from '~/components/modal';
 
+import {$roles} from '../../models/roles';
 import {$isLoadingUser, $user, updateUserEvent} from '../../models/users';
 import {formDataToUserPayload, userDtoToFormData, UserEditProfileForm, UserFormType} from '../user-edit-profile-form';
 
@@ -13,9 +14,9 @@ interface UserEditModalProps {
 }
 
 export const UserEditModal = ({isOpen, onClose}: UserEditModalProps): React.JSX.Element => {
-    const [user, isLoadingUser, updateUser] = useUnit([$user, $isLoadingUser, updateUserEvent]);
+    const [user, isLoadingUser, updateUser, roles] = useUnit([$user, $isLoadingUser, updateUserEvent, $roles]);
 
-    const defaultValues = useMemo(() => userDtoToFormData(user), [user]);
+    const defaultValues = useMemo(() => userDtoToFormData(user, roles), [user, roles]);
 
     const handleSubmit: SubmitHandler<UserFormType> = (data) =>
         updateUser({id: user?.id ?? '', ...formDataToUserPayload(data)});
