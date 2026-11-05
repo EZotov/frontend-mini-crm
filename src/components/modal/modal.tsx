@@ -44,7 +44,7 @@ export const Modal = ({
 }: ModalProps): React.JSX.Element => {
     const baseRender = (
         <Stack direction="column" spacing={3}>
-            <Typography component="h3" sx={{fontSize: headlineFontSize}}>
+            <Typography component="h3" variant="h3" sx={{fontSize: headlineFontSize}}>
                 {title}
             </Typography>
 

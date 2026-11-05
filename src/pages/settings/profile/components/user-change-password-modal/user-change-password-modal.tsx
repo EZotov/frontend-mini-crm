@@ -1,6 +1,6 @@
 import {Modal} from '~/components/modal';
 
-import {UserChangePasswordForm} from '../user-change-password-form';
+import {UserChangePasswordForm} from './user-change-password-form';
 
 interface UserChangePasswordModalProps {
     isOpen: boolean;

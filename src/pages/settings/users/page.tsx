@@ -3,11 +3,11 @@ import {Box, Button, Card, CardActions, CardContent, Stack, Typography} from '@m
 import {useGate, useUnit} from 'effector-react';
 import {useState} from 'react';
 
+import {ConfirmModal, useConfirmModal} from '~/components/confirm-modal';
 import {Container} from '~/components/container';
 import {LabelList} from '~/components/label-list';
 import {PageLayout} from '~/components/layout/page-layout';
 import {Pagination} from '~/components/pagination';
-import {SmartButton} from '~/components/smart-button';
 import {ROUTE_PATHS} from '~/router/paths';
 import type {SxMapProps} from '~/styles/types';
 import {getFullName} from '~/utils/helpers';
@@ -66,6 +66,8 @@ const UsersPage = (): React.JSX.Element => {
             $isDeleteUserSubmitting,
         ]);
 
+    const {onOpenConfirm, confirmModalProps} = useConfirmModal({isSubmitting: isDeleteUserSubmitting});
+
     return (
         <PageLayout
             pageTitle="Пользователи системы"
@@ -117,17 +119,21 @@ const UsersPage = (): React.JSX.Element => {
                                         <Button size="medium" onClick={() => setModelOpen(true)}>
                                             Редактировать информацию
                                         </Button>
-                                        <SmartButton
+                                        <Button
                                             size="medium"
-                                            isSubmitting={isDeleteUserSubmitting}
-                                            // TODO: Как появится модалка подтверждения - доделать
-                                            onClick={() => deleteUser(user.id)}
+                                            onClick={() =>
+                                                onOpenConfirm({
+                                                    title: 'Вы действительно хотите удалить этого пользователя?',
+                                                    onConfirm: () => deleteUser(user.id),
+                                                })
+                                            }
                                         >
                                             Удалить
-                                        </SmartButton>
+                                        </Button>
                                     </Stack>
                                 </CardActions>
                             </Box>
+                            <ConfirmModal {...confirmModalProps} />
                         </Card>
                     ))}
                 </Stack>

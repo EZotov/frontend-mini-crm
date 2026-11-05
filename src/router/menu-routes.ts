@@ -1,4 +1,5 @@
 import MainPage from '~/pages/main/page';
+import {ROLES} from '~/pages/settings/consts';
 import ProfilePage from '~/pages/settings/profile/page';
 import UsersPage from '~/pages/settings/users/page';
 
@@ -19,8 +20,9 @@ export const routesWithMenu: RouteObjectWithParams[] = [
     {
         path: ROUTE_PATHS.USERS_PAGE,
         Component: UsersPage,
-        protected: true,
+        protected: [ROLES.ADMIN],
     },
+
     // {
     //     path: ROUTE_PATHS.COMPANIES_PAGE,
     //     Component: CompaniesPage,

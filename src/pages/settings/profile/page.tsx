@@ -1,14 +1,16 @@
 import {Stack} from '@mui/material';
+import {useGate} from 'effector-react';
 
 import {ActionGetter, PageLayout} from '~/components/layout/page-layout';
 import {useModal} from '~/hooks/use-modal';
 
 import {UserEditModal} from '../users/components/user-edit-modal';
-import {AvatarSection} from './avatar-section';
 import {UserChangePasswordModal} from './components/user-change-password-modal';
 import {PROFILE_MODAL_TYPE} from './consts';
+import {profilePageGate} from './models/profile';
+import {AvatarSection} from './sections/avatar-section';
+import {UserInfoSection} from './sections/user-info-section';
 import {ProfileModalData, ProfileModalHandler} from './types';
-import {UserInfoSection} from './user-info-section';
 
 const getAction: ActionGetter<ProfileModalHandler> = (onOpenModal) => [
     {
@@ -24,6 +26,8 @@ const getAction: ActionGetter<ProfileModalHandler> = (onOpenModal) => [
 ];
 
 const ProfilePage = (): React.JSX.Element => {
+    useGate(profilePageGate);
+
     const {isOpen, modalData, onOpenModal, onCloseModal} = useModal<ProfileModalData>();
 
     return (
