@@ -1,5 +1,6 @@
 import {To} from 'react-router-dom';
 
+import {ROLES} from '~/consts/roles';
 import {ROUTE_PATHS} from '~/router/paths';
 
 interface SettingsMenu {
@@ -16,9 +17,9 @@ export const getSettingsMenu = (role?: string | null): SettingsMenu[] => [
         to: ROUTE_PATHS.PROFILE,
     },
     {
-        id: 'settings-menu-users-and-rights',
-        title: 'Пользователи и права системы',
+        id: 'settings-menu-users',
+        title: 'Пользователи системы',
         to: ROUTE_PATHS.USERS_PAGE,
-        isHidden: role !== 'ADMIN',
+        isHidden: role !== ROLES.ADMIN,
     },
 ];
