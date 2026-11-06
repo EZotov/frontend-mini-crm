@@ -1,4 +1,5 @@
 import {CoreApiClient} from '~/api/base-api';
+import {ENV_CONFIG} from '~/utils/env-config';
 
 import type {
     GetUserPath,
@@ -60,4 +61,6 @@ class MainApiService extends CoreApiClient {
     }
 }
 
-export const mainApi = new MainApiService();
+export const mainApi = new MainApiService({
+    baseURL: ENV_CONFIG.APP_BASE_API_URL,
+});

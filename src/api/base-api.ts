@@ -75,11 +75,8 @@ export class CoreApiClient extends ApiClient {
         this.instanceConfig = config ?? {};
 
         this.client = axios.create({
+            ...this.instanceConfig,
             baseURL: this.instanceConfig?.baseURL || '/api',
-            headers: {
-                ...(config?.headers && config.headers),
-            },
-            ...config,
         });
 
         this.client.interceptors.request.use(authRequestInterceptor);
