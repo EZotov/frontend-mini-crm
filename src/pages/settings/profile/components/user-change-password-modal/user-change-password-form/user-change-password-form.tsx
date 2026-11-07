@@ -6,7 +6,11 @@ import {FormBaseProps} from '~/types';
 
 import {UserChangePasswordSchema, UserChangePasswordType} from './schema';
 
-export const UserChangePasswordForm = ({defaultValues, onSubmit}: FormBaseProps<UserChangePasswordType>) => {
+export const UserChangePasswordForm = ({
+    defaultValues,
+    onSubmit,
+    onCancelClick,
+}: FormBaseProps<UserChangePasswordType>) => {
     const form = useFormController<UserChangePasswordType>(UserChangePasswordSchema, {
         action: FORM_ACTION.CREATE,
         defaultValues: defaultValues ?? {
@@ -17,11 +21,26 @@ export const UserChangePasswordForm = ({defaultValues, onSubmit}: FormBaseProps<
     });
 
     return (
-        <FormController<UserChangePasswordType> {...form} onSubmit={onSubmit}>
+        <FormController<UserChangePasswordType> {...form} onSubmit={onSubmit} cancelOnClick={onCancelClick}>
             <Stack direction="column" spacing={1}>
-                <TextFieldController<UserChangePasswordType> fullWidth name="currentPassword" type="password" />
-                <TextFieldController<UserChangePasswordType> fullWidth name="newPassWord" type="password" />
-                <TextFieldController<UserChangePasswordType> fullWidth name="confirmPassword" type="password" />
+                <TextFieldController<UserChangePasswordType>
+                    fullWidth
+                    name="currentPassword"
+                    type="password"
+                    label="Текущий пароль"
+                />
+                <TextFieldController<UserChangePasswordType>
+                    fullWidth
+                    name="newPassWord"
+                    type="password"
+                    label="Новый пароль"
+                />
+                <TextFieldController<UserChangePasswordType>
+                    fullWidth
+                    name="confirmPassword"
+                    type="password"
+                    label="Подтвердите пароль"
+                />
             </Stack>
         </FormController>
     );

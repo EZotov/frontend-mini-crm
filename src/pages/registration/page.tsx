@@ -8,9 +8,9 @@ import {RegistrationForm} from './components/registration-form';
 const styles: SxMapProps<'container'> = {
     container: {
         position: 'absolute',
-        top: '20%',
+        top: '50%',
         left: '50%',
-        transform: 'translateX(-50%)',
+        transform: 'translate(-50%, -50%)',
         minWidth: 420,
         maxWidth: 840,
     },

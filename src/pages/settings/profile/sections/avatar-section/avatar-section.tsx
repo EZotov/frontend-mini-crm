@@ -5,11 +5,7 @@ import {Container} from '~/components/container';
 import {onErrorUserAvatarHandler} from '~/utils/helpers';
 
 export const AvatarSection = (): React.JSX.Element => {
-    const [isAvatarLoading, setIsAvatarLoading] = useState<boolean>(true);
-
-    const handleLoad = () => {
-        setIsAvatarLoading(false);
-    };
+    const [isAvatarLoading, setIsAvatarLoading] = useState<boolean>(false);
 
     const handleError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
         setIsAvatarLoading(false);
@@ -27,7 +23,8 @@ export const AvatarSection = (): React.JSX.Element => {
                         component="img"
                         src=""
                         sx={{width: '100%', height: 300}}
-                        onLoad={handleLoad}
+                        onLoad={() => setIsAvatarLoading(false)}
+                        onLoadStart={() => setIsAvatarLoading(true)}
                         onError={handleError}
                     />
                 </Container>

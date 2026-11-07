@@ -8,9 +8,9 @@ import {LoginForm} from './components/login-form';
 const styles: SxMapProps<'container'> = {
     container: {
         position: 'absolute',
-        top: '40%',
+        top: '50%',
         left: '50%',
-        transform: 'translateX(-50%)',
+        transform: 'translate(-50%, -50%)',
         minWidth: 420,
         maxWidth: 840,
     },

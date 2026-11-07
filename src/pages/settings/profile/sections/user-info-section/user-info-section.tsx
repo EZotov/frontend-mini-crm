@@ -30,7 +30,7 @@ export const UserInfoSection = (): React.JSX.Element => {
                             items={[
                                 {
                                     label: 'email',
-                                    text: profile.email,
+                                    text: profile?.email,
                                 },
                                 {
                                     label: 'ФИО',
@@ -46,11 +46,11 @@ export const UserInfoSection = (): React.JSX.Element => {
                                 },
                                 {
                                     label: 'Состояние УЗ',
-                                    text: profile.isBlocked ? 'Заблокирована' : 'Без ограничений',
+                                    text: profile?.isBlocked ? 'Заблокирована' : 'Без ограничений',
                                 },
                                 {
                                     label: 'Идентификатор',
-                                    text: profile.id,
+                                    text: profile?.id,
                                 },
                             ]}
                         />

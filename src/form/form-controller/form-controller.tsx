@@ -10,6 +10,7 @@ interface FormControllerProps<FV extends FieldValues> extends FormProviderProps<
     onSubmit: SubmitHandler<FV>;
     disableIsDirty: boolean;
     cancelLink?: string;
+    cancelOnClick?: () => void;
     submitDisabled?: boolean;
     submitButtonName?: string;
     cancelButtonName?: string;
@@ -26,6 +27,7 @@ export const FormController = <FV extends FieldValues = FieldValues>({
     children,
     onSubmit,
     cancelLink = '',
+    cancelOnClick,
     submitDisabled,
     submitButtonName = 'Сохранить',
     cancelButtonName = 'Отмена',
@@ -42,6 +44,22 @@ export const FormController = <FV extends FieldValues = FieldValues>({
     } = formProviderProps;
 
     const isDirtyState = disableIsDirty ? false : !isDirty;
+
+    const renderCancelButton = () => {
+        if (cancelOnClick) {
+            return (
+                <Button color="secondary" variant="outlined" onClick={cancelOnClick} fullWidth={buttonsFullWidth}>
+                    {cancelButtonName}
+                </Button>
+            );
+        }
+
+        return (
+            <Button color="secondary" variant="outlined" component={Link} to={cancelLink} fullWidth={buttonsFullWidth}>
+                {cancelButtonName}
+            </Button>
+        );
+    };
 
     return (
         <FormProvider<FV> {...formProviderProps}>
@@ -70,17 +88,7 @@ export const FormController = <FV extends FieldValues = FieldValues>({
                                 {submitButtonName}
                             </SmartButton>
 
-                            {!hideCancelButton && (
-                                <Button
-                                    color="secondary"
-                                    variant="outlined"
-                                    component={Link}
-                                    to={cancelLink}
-                                    fullWidth={buttonsFullWidth}
-                                >
-                                    {cancelButtonName}
-                                </Button>
-                            )}
+                            {!hideCancelButton && renderCancelButton}
                         </>
                     )}
 

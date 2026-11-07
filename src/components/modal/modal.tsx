@@ -5,12 +5,13 @@ const modalStyle: SxProps = {
     position: 'absolute',
     top: '50%',
     left: '50%',
-    bgcolor: '#e9e9e9a3',
+    bgcolor: '#e9e9e9',
     transform: 'translate(-50%, -50%)',
     outline: 'none',
-    maxWidth: '80vw',
-    minWidth: 640,
+    maxWidth: '60vw',
+    minWidth: 420,
     p: 4,
+    borderRadius: 8,
 };
 
 interface ModalBaseProps {
@@ -44,7 +45,17 @@ export const Modal = ({
 }: ModalProps): React.JSX.Element => {
     const baseRender = (
         <Stack direction="column" spacing={3}>
-            <Typography component="h3" variant="h3" sx={{fontSize: headlineFontSize}}>
+            <Typography
+                component="h3"
+                variant="h3"
+                sx={{
+                    fontSize: headlineFontSize,
+                    borderBottom: 2,
+                    borderBottomColor: 'primary.main',
+                    borderBottomStyle: 'solid',
+                    pb: 1,
+                }}
+            >
                 {title}
             </Typography>
 

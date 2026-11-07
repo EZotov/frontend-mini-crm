@@ -16,7 +16,7 @@ const styles: SxMapProps<'container'> = {
         borderRadius: 0,
         minWidth: 160,
         padding: 0,
-        height: 'calc(100vh - 64.67px)',
+        height: 'calc(100vh - 72px)',
         flexBasis: '15%',
         flexShrink: 0,
         position: 'sticky',

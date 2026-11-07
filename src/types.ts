@@ -20,6 +20,7 @@ export interface FormBaseProps<FV extends FieldValues> {
     onSubmit: SubmitHandler<FV>;
     defaultValues?: FV;
     cancelLink?: string;
+    onCancelClick?: () => void;
     submitButtonName?: string;
     cancelButtonName?: string;
     buttonsFullWidth?: boolean;
