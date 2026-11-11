@@ -1,5 +1,5 @@
 export interface paths {
-    '/v1/companies': {
+    "/v1/companies": {
         parameters: {
             query?: never;
             header?: never;
@@ -7,17 +7,17 @@ export interface paths {
             cookie?: never;
         };
         /** Получить список компаний */
-        get: operations['CompanyController_getAll'];
+        get: operations["CompanyController_getAll"];
         put?: never;
         /** Создать новую компанию */
-        post: operations['CompanyController_create'];
+        post: operations["CompanyController_create"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/companies/{id}': {
+    "/v1/companies/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -25,18 +25,18 @@ export interface paths {
             cookie?: never;
         };
         /** Получить компанию */
-        get: operations['CompanyController_get'];
+        get: operations["CompanyController_get"];
         /** Обновить информацию о компании */
-        put: operations['CompanyController_update'];
+        put: operations["CompanyController_update"];
         post?: never;
         /** Удалить компанию */
-        delete: operations['CompanyController_delete'];
+        delete: operations["CompanyController_delete"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/customers': {
+    "/v1/customers": {
         parameters: {
             query?: never;
             header?: never;
@@ -44,17 +44,17 @@ export interface paths {
             cookie?: never;
         };
         /** Получить всех заказчиков */
-        get: operations['CustomerController_getAll'];
+        get: operations["CustomerController_getAll"];
         put?: never;
         /** Создать нового заказчика */
-        post: operations['CustomerController_create'];
+        post: operations["CustomerController_create"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/customers/{id}': {
+    "/v1/customers/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -62,18 +62,18 @@ export interface paths {
             cookie?: never;
         };
         /** Получить заказчика */
-        get: operations['CustomerController_get'];
+        get: operations["CustomerController_get"];
         /** Изменить данные заказчика */
-        put: operations['CustomerController_update'];
+        put: operations["CustomerController_update"];
         post?: never;
         /** Удалить заказчика */
-        delete: operations['CustomerController_delete'];
+        delete: operations["CustomerController_delete"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/roles': {
+    "/v1/roles": {
         parameters: {
             query?: never;
             header?: never;
@@ -81,17 +81,17 @@ export interface paths {
             cookie?: never;
         };
         /** Получить список ролей */
-        get: operations['RoleController_getAll'];
+        get: operations["RoleController_getAll"];
         put?: never;
         /** Создать роль */
-        post: operations['RoleController_create'];
+        post: operations["RoleController_create"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/roles/{id}': {
+    "/v1/roles/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -100,16 +100,16 @@ export interface paths {
         };
         get?: never;
         /** Изменить роль */
-        put: operations['RoleController_update'];
+        put: operations["RoleController_update"];
         post?: never;
         /** Удалить роль */
-        delete: operations['RoleController_delete'];
+        delete: operations["RoleController_delete"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/users/me': {
+    "/v1/users/me": {
         parameters: {
             query?: never;
             header?: never;
@@ -117,19 +117,19 @@ export interface paths {
             cookie?: never;
         };
         /** Получить свой профиль по токену */
-        get: operations['MeUserController_me'];
+        get: operations["MeUserController_me"];
         /** Изменить данные своего профиля */
-        put: operations['MeUserController_updateMyProfile'];
+        put: operations["MeUserController_updateMyProfile"];
         /** Изменить пароль своего профиля */
-        post: operations['MeUserController_updateMyProfilePassword'];
+        post: operations["MeUserController_updateMyProfilePassword"];
         /** Удалить свой аккаунт */
-        delete: operations['MeUserController_deleteMyAccount'];
+        delete: operations["MeUserController_deleteMyAccount"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/users': {
+    "/v1/users": {
         parameters: {
             query?: never;
             header?: never;
@@ -137,7 +137,7 @@ export interface paths {
             cookie?: never;
         };
         /** Получить всех пользователей (для админа) */
-        get: operations['UserController_getAll'];
+        get: operations["UserController_getAll"];
         put?: never;
         post?: never;
         delete?: never;
@@ -146,7 +146,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    '/v1/users/{id}': {
+    "/v1/users/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -154,18 +154,18 @@ export interface paths {
             cookie?: never;
         };
         /** Получить профиль пользователя (для админа) */
-        get: operations['UserController_getUser'];
+        get: operations["UserController_getUser"];
         /** Изменить данные чужого профиля (для админа) */
-        put: operations['UserController_updateUserProfile'];
+        put: operations["UserController_updateUserProfile"];
         post?: never;
         /** Удалить пользователя (для админа) */
-        delete: operations['UserController_deleteUser'];
+        delete: operations["UserController_deleteUser"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/auth/sign-up': {
+    "/v1/auth/sign-up": {
         parameters: {
             query?: never;
             header?: never;
@@ -175,14 +175,14 @@ export interface paths {
         get?: never;
         put?: never;
         /** Зарегистрировать нового пользователя */
-        post: operations['AuthController_registration'];
+        post: operations["AuthController_registration"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/auth/sign-in': {
+    "/v1/auth/sign-in": {
         parameters: {
             query?: never;
             header?: never;
@@ -192,14 +192,14 @@ export interface paths {
         get?: never;
         put?: never;
         /** Войти в систему */
-        post: operations['AuthController_login'];
+        post: operations["AuthController_login"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/auth/refresh': {
+    "/v1/auth/refresh": {
         parameters: {
             query?: never;
             header?: never;
@@ -209,14 +209,14 @@ export interface paths {
         get?: never;
         put?: never;
         /** Обновить токен аутентификации */
-        post: operations['AuthController_refresh'];
+        post: operations["AuthController_refresh"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/auth/logout': {
+    "/v1/auth/logout": {
         parameters: {
             query?: never;
             header?: never;
@@ -226,14 +226,14 @@ export interface paths {
         get?: never;
         put?: never;
         /** Выйти из системы */
-        post: operations['AuthController_logout'];
+        post: operations["AuthController_logout"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/activities': {
+    "/v1/activities": {
         parameters: {
             query?: never;
             header?: never;
@@ -241,17 +241,17 @@ export interface paths {
             cookie?: never;
         };
         /** Получить список задач */
-        get: operations['ActivityController_getAllByDeal'];
+        get: operations["ActivityController_getAllByDeal"];
         put?: never;
         /** Создать новую задачу */
-        post: operations['ActivityController_create'];
+        post: operations["ActivityController_create"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/activities/grouped-by-status': {
+    "/v1/activities/grouped-by-status": {
         parameters: {
             query?: never;
             header?: never;
@@ -259,7 +259,7 @@ export interface paths {
             cookie?: never;
         };
         /** Получить список задач с группировкой по статусу */
-        get: operations['ActivityController_getAllByDealInStatus'];
+        get: operations["ActivityController_getAllByDealInStatus"];
         put?: never;
         post?: never;
         delete?: never;
@@ -268,7 +268,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    '/v1/activities/{id}': {
+    "/v1/activities/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -277,16 +277,16 @@ export interface paths {
         };
         get?: never;
         /** Обновить задачу */
-        put: operations['ActivityController_update'];
+        put: operations["ActivityController_update"];
         post?: never;
         /** Удалить задачу */
-        delete: operations['ActivityController_delete'];
+        delete: operations["ActivityController_delete"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/deals': {
+    "/v1/deals": {
         parameters: {
             query?: never;
             header?: never;
@@ -294,17 +294,17 @@ export interface paths {
             cookie?: never;
         };
         /** Получить все сделки */
-        get: operations['DealController_getAll'];
+        get: operations["DealController_getAll"];
         put?: never;
         /** Создать сделку */
-        post: operations['DealController_create'];
+        post: operations["DealController_create"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/deals/{id}': {
+    "/v1/deals/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -312,18 +312,18 @@ export interface paths {
             cookie?: never;
         };
         /** Получить сделку */
-        get: operations['DealController_get'];
+        get: operations["DealController_get"];
         /** Изменить сделку */
-        put: operations['DealController_update'];
+        put: operations["DealController_update"];
         post?: never;
         /** Удалить сделку */
-        delete: operations['DealController_delete'];
+        delete: operations["DealController_delete"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/deals/{id}/status': {
+    "/v1/deals/{id}/status": {
         parameters: {
             query?: never;
             header?: never;
@@ -337,10 +337,10 @@ export interface paths {
         options?: never;
         head?: never;
         /** Изменить статус сделки */
-        patch: operations['DealController_changeStatus'];
+        patch: operations["DealController_changeStatus"];
         trace?: never;
     };
-    '/v1/deals/{id}/funnel-stage': {
+    "/v1/deals/{id}/funnel-stage": {
         parameters: {
             query?: never;
             header?: never;
@@ -354,10 +354,10 @@ export interface paths {
         options?: never;
         head?: never;
         /** Изменить этап воронки сделки */
-        patch: operations['DealController_changeFunnelStage'];
+        patch: operations["DealController_changeFunnelStage"];
         trace?: never;
     };
-    '/v1/deals/{id}/history': {
+    "/v1/deals/{id}/history": {
         parameters: {
             query?: never;
             header?: never;
@@ -365,7 +365,7 @@ export interface paths {
             cookie?: never;
         };
         /** Получить историю по сделке */
-        get: operations['DealController_getDealHistory'];
+        get: operations["DealController_getDealHistory"];
         put?: never;
         post?: never;
         delete?: never;
@@ -374,7 +374,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    '/v1/analytics/summary': {
+    "/v1/analytics/summary": {
         parameters: {
             query?: never;
             header?: never;
@@ -382,7 +382,7 @@ export interface paths {
             cookie?: never;
         };
         /** Получить сводку аналитики */
-        get: operations['AnalyticsController_getSummary'];
+        get: operations["AnalyticsController_getSummary"];
         put?: never;
         post?: never;
         delete?: never;
@@ -391,7 +391,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    '/v1/funnels': {
+    "/v1/funnels": {
         parameters: {
             query?: never;
             header?: never;
@@ -399,17 +399,17 @@ export interface paths {
             cookie?: never;
         };
         /** Получить все воронки */
-        get: operations['FunnelController_findAll'];
+        get: operations["FunnelController_findAll"];
         put?: never;
         /** Создать воронку */
-        post: operations['FunnelController_create'];
+        post: operations["FunnelController_create"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/funnels/{id}': {
+    "/v1/funnels/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -417,18 +417,18 @@ export interface paths {
             cookie?: never;
         };
         /** Получить воронку по id */
-        get: operations['FunnelController_findOne'];
+        get: operations["FunnelController_findOne"];
         /** Редактировать сведения о воронке */
-        put: operations['FunnelController_update'];
+        put: operations["FunnelController_update"];
         post?: never;
         /** Удалить воронку */
-        delete: operations['FunnelController_remove'];
+        delete: operations["FunnelController_remove"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/funnels/{funnelId}/stages': {
+    "/v1/funnels/{funnelId}/stages": {
         parameters: {
             query?: never;
             header?: never;
@@ -436,17 +436,17 @@ export interface paths {
             cookie?: never;
         };
         /** Получить список этапов по воронке */
-        get: operations['FunnelStagesController_getList'];
+        get: operations["FunnelStagesController_getList"];
         put?: never;
         /** Создать этап воронки */
-        post: operations['FunnelStagesController_create'];
+        post: operations["FunnelStagesController_create"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/funnel-stages/{stageId}': {
+    "/v1/funnel-stages/{stageId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -454,18 +454,18 @@ export interface paths {
             cookie?: never;
         };
         /** Получить этап воронки по id */
-        get: operations['FunnelStagesController_get'];
+        get: operations["FunnelStagesController_get"];
         /** Редактировать сведения об этапе воронки */
-        put: operations['FunnelStagesController_update'];
+        put: operations["FunnelStagesController_update"];
         post?: never;
         /** Удалить этап воронки */
-        delete: operations['FunnelStagesController_remove'];
+        delete: operations["FunnelStagesController_remove"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    '/v1/funnels/{funnelId}/stages/{stageId}/order': {
+    "/v1/funnels/{funnelId}/stages/{stageId}/order": {
         parameters: {
             query?: never;
             header?: never;
@@ -479,7 +479,7 @@ export interface paths {
         options?: never;
         head?: never;
         /** Изменение порядка этапа воронки */
-        patch: operations['FunnelStagesController_reorder'];
+        patch: operations["FunnelStagesController_reorder"];
         trace?: never;
     };
 }
@@ -512,7 +512,7 @@ export interface components {
             patronymic: Record<string, never> | null;
             firstName: string;
             phone: string;
-            company: components['schemas']['Company'];
+            company: components["schemas"]["Company"];
         };
         CreateCustomerDto: {
             lastName: string;
@@ -562,12 +562,11 @@ export interface components {
             isBlocked: boolean;
             role?: string | null;
         };
-        UpdateUserDto: {
+        UpdateMeUserDto: {
             email: string;
             firstName: string;
             patronymic: string | null;
             lastName: string;
-            roleId: string;
         };
         UpdatePasswordDto: {
             /** @description Новый пароль */
@@ -576,6 +575,13 @@ export interface components {
             newPassword: string;
             /** @description Подтвердить пароль */
             confirmPassword: string;
+        };
+        UpdateUserDto: {
+            email: string;
+            firstName: string;
+            patronymic: string | null;
+            lastName: string;
+            roleId: string;
         };
         TokensDto: {
             accessToken: string;
@@ -602,7 +608,7 @@ export interface components {
             title: string;
             order: number;
             /** @enum {string} */
-            type: 'IN_PROGRESS' | 'WON' | 'LOST';
+            type: "IN_PROGRESS" | "WON" | "LOST";
             funnelTitle: string | null;
         };
         DealShortDto: {
@@ -626,7 +632,7 @@ export interface components {
              * @description Статус сделки
              * @enum {string}
              */
-            status: 'NEW' | 'IN_PROGRESS' | 'CLOSE' | 'REOPEN';
+            status: "NEW" | "IN_PROGRESS" | "CLOSE" | "REOPEN";
             /**
              * Format: date-time
              * @description Дедлайн SLA
@@ -639,52 +645,52 @@ export interface components {
              */
             isSlaViolated: boolean;
             /** @description Менеджер сделки */
-            manager: components['schemas']['UserDto'];
+            manager: components["schemas"]["UserDto"];
             /** @description Клиент сделки */
-            customer: components['schemas']['CustomerDto'];
+            customer: components["schemas"]["CustomerDto"];
             /** @description Этап воронки */
-            currentFunnelStage: components['schemas']['FunnelStagesDto'];
+            currentFunnelStage: components["schemas"]["FunnelStagesDto"];
         };
         ActivityDto: {
             /** Format: uuid */
             id: string;
             /** @enum {string} */
-            type: 'CALL' | 'EMAIL' | 'MEETING' | 'TELEGRAM';
+            type: "CALL" | "EMAIL" | "MEETING" | "TELEGRAM";
             title: string;
             description: string;
             /** Format: date-time */
             dueDate: string;
-            deal: components['schemas']['DealShortDto'] | null;
-            assigned: components['schemas']['UserDto'] | null;
-            createdBy: components['schemas']['UserDto'];
+            deal: components["schemas"]["DealShortDto"] | null;
+            assigned: components["schemas"]["UserDto"] | null;
+            createdBy: components["schemas"]["UserDto"];
         };
         GroupedActivityByStatusDto: {
             /** @enum {string} */
-            status: 'NEW' | 'TODO' | 'IN_PROGRESS' | 'DONE' | 'CANCELED';
+            status: "NEW" | "TODO" | "IN_PROGRESS" | "DONE" | "CANCELED";
             count: number;
-            activities: components['schemas']['ActivityDto'][];
+            activities: components["schemas"]["ActivityDto"][];
         };
         CreateActivityDto: {
             /** @enum {string} */
-            type: 'CALL' | 'EMAIL' | 'MEETING' | 'TELEGRAM';
+            type: "CALL" | "EMAIL" | "MEETING" | "TELEGRAM";
             title: string;
             description: string;
             /** Format: date-time */
             dueDate: string;
             /** @enum {string} */
-            status?: 'NEW' | 'TODO' | 'IN_PROGRESS' | 'DONE' | 'CANCELED';
+            status?: "NEW" | "TODO" | "IN_PROGRESS" | "DONE" | "CANCELED";
             dealId?: string | null;
             assignedId: string;
         };
         UpdateActivityDto: {
             /** @enum {string} */
-            type: 'CALL' | 'EMAIL' | 'MEETING' | 'TELEGRAM';
+            type: "CALL" | "EMAIL" | "MEETING" | "TELEGRAM";
             title: string;
             description: string;
             /** Format: date-time */
             dueDate: string;
             /** @enum {string} */
-            status: 'NEW' | 'TODO' | 'IN_PROGRESS' | 'DONE' | 'CANCELED';
+            status: "NEW" | "TODO" | "IN_PROGRESS" | "DONE" | "CANCELED";
             dealId: string | null;
             assignedId: string;
         };
@@ -709,7 +715,7 @@ export interface components {
              * @description Статус сделки
              * @enum {string}
              */
-            status: 'NEW' | 'IN_PROGRESS' | 'CLOSE' | 'REOPEN';
+            status: "NEW" | "IN_PROGRESS" | "CLOSE" | "REOPEN";
             /**
              * Format: date-time
              * @description Дедлайн SLA
@@ -722,13 +728,13 @@ export interface components {
              */
             isSlaViolated: boolean;
             /** @description Менеджер сделки */
-            manager: components['schemas']['UserDto'];
+            manager: components["schemas"]["UserDto"];
             /** @description Автор сделки */
-            createdBy: components['schemas']['UserDto'];
+            createdBy: components["schemas"]["UserDto"];
             /** @description Клиент сделки */
-            customer: components['schemas']['CustomerDto'];
+            customer: components["schemas"]["CustomerDto"];
             /** @description Этап воронки */
-            currentFunnelStage: components['schemas']['FunnelStagesDto'];
+            currentFunnelStage: components["schemas"]["FunnelStagesDto"];
         };
         CreateOrUpdateDealDto: {
             /**
@@ -750,7 +756,7 @@ export interface components {
              * @example IN_PROGRESS
              * @enum {string}
              */
-            status: 'NEW' | 'IN_PROGRESS' | 'CLOSE' | 'REOPEN';
+            status: "NEW" | "IN_PROGRESS" | "CLOSE" | "REOPEN";
         };
         ChangeDealFunnelStage: {
             /**
@@ -790,12 +796,12 @@ export interface components {
         CreateFunnelStagesDto: {
             title: string;
             /** @enum {string} */
-            type: 'IN_PROGRESS' | 'WON' | 'LOST';
+            type: "IN_PROGRESS" | "WON" | "LOST";
         };
         UpdateFunnelStagesDto: {
             title: string;
             /** @enum {string} */
-            type: 'IN_PROGRESS' | 'WON' | 'LOST';
+            type: "IN_PROGRESS" | "WON" | "LOST";
             /** Format: uuid */
             funnelId: string;
         };
@@ -829,8 +835,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['Company'][];
+                    "application/json": {
+                        data: components["schemas"]["Company"][];
                         /**
                          * @description Общее количество записей
                          * @example 0
@@ -850,7 +856,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['CreateOrUpdateCompanyDto'];
+                "application/json": components["schemas"]["CreateOrUpdateCompanyDto"];
             };
         };
         responses: {
@@ -859,8 +865,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -882,8 +888,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['Company'];
+                    "application/json": {
+                        data: components["schemas"]["Company"];
                     };
                 };
             };
@@ -900,7 +906,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['CreateOrUpdateCompanyDto'];
+                "application/json": components["schemas"]["CreateOrUpdateCompanyDto"];
             };
         };
         responses: {
@@ -909,8 +915,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -952,8 +958,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CustomerDto'][];
+                    "application/json": {
+                        data: components["schemas"]["CustomerDto"][];
                         /**
                          * @description Общее количество записей
                          * @example 0
@@ -973,7 +979,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['CreateCustomerDto'];
+                "application/json": components["schemas"]["CreateCustomerDto"];
             };
         };
         responses: {
@@ -982,8 +988,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1005,8 +1011,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CustomerDto'];
+                    "application/json": {
+                        data: components["schemas"]["CustomerDto"];
                     };
                 };
             };
@@ -1023,7 +1029,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['UpdateCustomerDto'];
+                "application/json": components["schemas"]["UpdateCustomerDto"];
             };
         };
         responses: {
@@ -1032,8 +1038,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1072,8 +1078,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['Role'][];
+                    "application/json": {
+                        data: components["schemas"]["Role"][];
                         /**
                          * @description Общее количество записей
                          * @example 0
@@ -1093,7 +1099,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['CreateOrUpdateRoleDto'];
+                "application/json": components["schemas"]["CreateOrUpdateRoleDto"];
             };
         };
         responses: {
@@ -1102,8 +1108,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1120,7 +1126,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['CreateOrUpdateRoleDto'];
+                "application/json": components["schemas"]["CreateOrUpdateRoleDto"];
             };
         };
         responses: {
@@ -1129,8 +1135,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1169,8 +1175,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['UserDto'];
+                    "application/json": {
+                        data: components["schemas"]["UserDto"];
                     };
                 };
             };
@@ -1185,7 +1191,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['UpdateUserDto'];
+                "application/json": components["schemas"]["UpdateMeUserDto"];
             };
         };
         responses: {
@@ -1194,8 +1200,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1210,7 +1216,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['UpdatePasswordDto'];
+                "application/json": components["schemas"]["UpdatePasswordDto"];
             };
         };
         responses: {
@@ -1219,8 +1225,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1261,8 +1267,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['UserDto'][];
+                    "application/json": {
+                        data: components["schemas"]["UserDto"][];
                         /**
                          * @description Общее количество записей
                          * @example 0
@@ -1289,8 +1295,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['UserDto'];
+                    "application/json": {
+                        data: components["schemas"]["UserDto"];
                     };
                 };
             };
@@ -1307,7 +1313,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['UpdateUserDto'];
+                "application/json": components["schemas"]["UpdateUserDto"];
             };
         };
         responses: {
@@ -1316,8 +1322,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1351,7 +1357,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['CreateUserDto'];
+                "application/json": components["schemas"]["CreateUserDto"];
             };
         };
         responses: {
@@ -1360,8 +1366,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['TokensDto'];
+                    "application/json": {
+                        data: components["schemas"]["TokensDto"];
                     };
                 };
             };
@@ -1376,7 +1382,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['LoginRequestDto'];
+                "application/json": components["schemas"]["LoginRequestDto"];
             };
         };
         responses: {
@@ -1385,8 +1391,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['TokensDto'];
+                    "application/json": {
+                        data: components["schemas"]["TokensDto"];
                     };
                 };
             };
@@ -1406,8 +1412,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['RefreshAccessTokenDto'];
+                    "application/json": {
+                        data: components["schemas"]["RefreshAccessTokenDto"];
                     };
                 };
             };
@@ -1436,7 +1442,7 @@ export interface operations {
                 dealId?: string;
                 createdById?: string;
                 assignedId?: string;
-                status?: 'NEW' | 'TODO' | 'IN_PROGRESS' | 'DONE' | 'CANCELED';
+                status?: "NEW" | "TODO" | "IN_PROGRESS" | "DONE" | "CANCELED";
             };
             header?: never;
             path?: never;
@@ -1449,8 +1455,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['ActivityDto'][];
+                    "application/json": {
+                        data: components["schemas"]["ActivityDto"][];
                         /**
                          * @description Общее количество записей
                          * @example 0
@@ -1470,7 +1476,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['CreateActivityDto'];
+                "application/json": components["schemas"]["CreateActivityDto"];
             };
         };
         responses: {
@@ -1479,8 +1485,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1502,8 +1508,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['GroupedActivityByStatusDto'][];
+                    "application/json": {
+                        data: components["schemas"]["GroupedActivityByStatusDto"][];
                         /**
                          * @description Общее количество записей
                          * @example 0
@@ -1525,7 +1531,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['UpdateActivityDto'];
+                "application/json": components["schemas"]["UpdateActivityDto"];
             };
         };
         responses: {
@@ -1534,8 +1540,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1568,7 +1574,7 @@ export interface operations {
                 managerId?: string;
                 createdById?: string;
                 customerId?: string;
-                status?: 'NEW' | 'IN_PROGRESS' | 'CLOSE' | 'REOPEN';
+                status?: "NEW" | "IN_PROGRESS" | "CLOSE" | "REOPEN";
             };
             header?: never;
             path?: never;
@@ -1581,8 +1587,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['DealDto'][];
+                    "application/json": {
+                        data: components["schemas"]["DealDto"][];
                         /**
                          * @description Общее количество записей
                          * @example 0
@@ -1602,7 +1608,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['CreateOrUpdateDealDto'];
+                "application/json": components["schemas"]["CreateOrUpdateDealDto"];
             };
         };
         responses: {
@@ -1611,8 +1617,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1634,8 +1640,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['DealDto'];
+                    "application/json": {
+                        data: components["schemas"]["DealDto"];
                     };
                 };
             };
@@ -1652,7 +1658,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['CreateOrUpdateDealDto'];
+                "application/json": components["schemas"]["CreateOrUpdateDealDto"];
             };
         };
         responses: {
@@ -1661,8 +1667,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1698,7 +1704,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['ChangeStatusDealDto'];
+                "application/json": components["schemas"]["ChangeStatusDealDto"];
             };
         };
         responses: {
@@ -1707,8 +1713,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1725,7 +1731,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['ChangeDealFunnelStage'];
+                "application/json": components["schemas"]["ChangeDealFunnelStage"];
             };
         };
         responses: {
@@ -1734,8 +1740,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1760,8 +1766,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['DealHistoryDto'][];
+                    "application/json": {
+                        data: components["schemas"]["DealHistoryDto"][];
                         /**
                          * @description Общее количество записей
                          * @example 0
@@ -1803,8 +1809,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['Funnel'][];
+                    "application/json": {
+                        data: components["schemas"]["Funnel"][];
                         /**
                          * @description Общее количество записей
                          * @example 0
@@ -1824,7 +1830,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['CreateFunnelDto'];
+                "application/json": components["schemas"]["CreateFunnelDto"];
             };
         };
         responses: {
@@ -1833,8 +1839,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1856,8 +1862,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['Funnel'];
+                    "application/json": {
+                        data: components["schemas"]["Funnel"];
                     };
                 };
             };
@@ -1874,7 +1880,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['UpdateFunnelDto'];
+                "application/json": components["schemas"]["UpdateFunnelDto"];
             };
         };
         responses: {
@@ -1883,8 +1889,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1925,8 +1931,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['FunnelStagesDto'][];
+                    "application/json": {
+                        data: components["schemas"]["FunnelStagesDto"][];
                         /**
                          * @description Общее количество записей
                          * @example 0
@@ -1948,7 +1954,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['CreateFunnelStagesDto'];
+                "application/json": components["schemas"]["CreateFunnelStagesDto"];
             };
         };
         responses: {
@@ -1957,8 +1963,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -1980,8 +1986,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['FunnelStagesDto'];
+                    "application/json": {
+                        data: components["schemas"]["FunnelStagesDto"];
                     };
                 };
             };
@@ -1998,7 +2004,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['UpdateFunnelStagesDto'];
+                "application/json": components["schemas"]["UpdateFunnelStagesDto"];
             };
         };
         responses: {
@@ -2007,8 +2013,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': {
-                        data: components['schemas']['CreateResponseDto'];
+                    "application/json": {
+                        data: components["schemas"]["CreateResponseDto"];
                     };
                 };
             };
@@ -2045,7 +2051,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                'application/json': components['schemas']['ChangeOrderFunnelStagesDto'];
+                "application/json": components["schemas"]["ChangeOrderFunnelStagesDto"];
             };
         };
         responses: {

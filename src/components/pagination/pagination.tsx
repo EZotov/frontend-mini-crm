@@ -9,7 +9,7 @@ import {
 
 import {PaginationState} from '~/types';
 
-interface PaginationProps {
+export interface PaginationProps {
     totalCount: number;
     paginationState: PaginationState;
     onChange?: (paginationState: PaginationState) => void;
