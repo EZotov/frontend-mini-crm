@@ -76,6 +76,7 @@ export const UserEditModal = ({userId, isOpen, onClose}: UserEditModalProps): Re
             isLoading={isMyProfileLoading || isLoadingUser}
         >
             <UserEditProfileForm
+                hasUserId={!!userId}
                 onSubmit={handleSubmit}
                 defaultValues={defaultValues}
                 isSubmitting={isUpdateUserSubmitting || isUpdateMyProfileSubmitting}
