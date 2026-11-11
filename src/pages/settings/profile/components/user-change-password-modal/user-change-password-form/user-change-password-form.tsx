@@ -10,18 +10,24 @@ export const UserChangePasswordForm = ({
     defaultValues,
     onSubmit,
     onCancelClick,
+    isSubmitting,
 }: FormBaseProps<UserChangePasswordType>) => {
     const form = useFormController<UserChangePasswordType>(UserChangePasswordSchema, {
         action: FORM_ACTION.CREATE,
         defaultValues: defaultValues ?? {
             currentPassword: '',
-            newPassWord: '',
+            newPassword: '',
             confirmPassword: '',
         },
     });
 
     return (
-        <FormController<UserChangePasswordType> {...form} onSubmit={onSubmit} cancelOnClick={onCancelClick}>
+        <FormController<UserChangePasswordType>
+            {...form}
+            onSubmit={onSubmit}
+            onCancelClick={onCancelClick}
+            isSubmitting={isSubmitting}
+        >
             <Stack direction="column" spacing={1}>
                 <TextFieldController<UserChangePasswordType>
                     fullWidth
@@ -31,7 +37,7 @@ export const UserChangePasswordForm = ({
                 />
                 <TextFieldController<UserChangePasswordType>
                     fullWidth
-                    name="newPassWord"
+                    name="newPassword"
                     type="password"
                     label="Новый пароль"
                 />

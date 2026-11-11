@@ -3,33 +3,66 @@ import React, {useEffect, useMemo} from 'react';
 import {SubmitHandler} from 'react-hook-form';
 
 import {Modal} from '~/components/modal';
+import {$isMyProfileLoading, $myProfile, getMyProfileEvent} from '~/models/auth';
+import {$isUpdateMyProfileSubmitting, updateMyProfileEvent} from '~/pages/settings/profile/models/profile';
 
 import {$roles} from '../../models/roles';
-import {$isLoadingUser, $user, getUserEvent, updateUserEvent} from '../../models/users';
+import {$isLoadingUser, $isUpdateUserSubmitting, $user, getUserEvent, updateUserEvent} from '../../models/users';
 import {formDataToUserPayload, userDtoToFormData, UserEditProfileForm, UserFormType} from '../user-edit-profile-form';
 
 interface UserEditModalProps {
-    userId: string;
     isOpen: boolean;
     onClose: () => void;
+    userId?: string;
 }
 
 export const UserEditModal = ({userId, isOpen, onClose}: UserEditModalProps): React.JSX.Element => {
-    const [user, isLoadingUser, updateUser, roles, getUser] = useUnit([
+    const [
+        user,
+        isLoadingUser,
+        updateUser,
+        isUpdateUserSubmitting,
+        roles,
+        getUser,
+        myProfile,
+        isMyProfileLoading,
+        getMyProfile,
+        updateMyProfile,
+        isUpdateMyProfileSubmitting,
+    ] = useUnit([
         $user,
         $isLoadingUser,
         updateUserEvent,
+        $isUpdateUserSubmitting,
         $roles,
         getUserEvent,
+        $myProfile,
+        $isMyProfileLoading,
+        getMyProfileEvent,
+        updateMyProfileEvent,
+        $isUpdateMyProfileSubmitting,
     ]);
 
-    const defaultValues = useMemo(() => userDtoToFormData(user, roles), [user, roles]);
+    const defaultValues = useMemo(() => userDtoToFormData(!userId ? myProfile : user, roles), [user, roles]);
 
-    const handleSubmit: SubmitHandler<UserFormType> = (data) =>
-        updateUser({id: user?.id ?? '', ...formDataToUserPayload(data)});
+    const handleSubmit: SubmitHandler<UserFormType> = (data) => {
+        const userData = formDataToUserPayload(data);
+
+        if (!userId) {
+            updateMyProfile(userData);
+            return;
+        }
+
+        updateUser({id: userId, ...userData});
+    };
 
     useEffect(() => {
         if (!isOpen) return;
+
+        if (!userId) {
+            getMyProfile();
+            return;
+        }
 
         getUser(userId);
     }, [isOpen]);
@@ -40,9 +73,13 @@ export const UserEditModal = ({userId, isOpen, onClose}: UserEditModalProps): Re
             onClose={onClose}
             title="Редактировать пользователя"
             type="FORM_MODAL"
-            isLoading={isLoadingUser}
+            isLoading={isMyProfileLoading || isLoadingUser}
         >
-            <UserEditProfileForm onSubmit={handleSubmit} defaultValues={defaultValues} />
+            <UserEditProfileForm
+                onSubmit={handleSubmit}
+                defaultValues={defaultValues}
+                isSubmitting={isUpdateUserSubmitting || isUpdateMyProfileSubmitting}
+            />
         </Modal>
     );
 };

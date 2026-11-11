@@ -19,3 +19,9 @@ export type UpdateUserPath = operations['UserController_updateUserProfile']['par
 export type UpdateUserBody =
     operations['UserController_updateUserProfile']['requestBody']['content']['application/json'];
 export type UpdateUserRequest = UpdateUserPath & UpdateUserBody;
+
+// Me
+export type ChangePasswordBody =
+    operations['MeUserController_updateMyProfilePassword']['requestBody']['content']['application/json'];
+export type UpdateMyProfileBody =
+    operations['MeUserController_updateMyProfile']['requestBody']['content']['application/json'];

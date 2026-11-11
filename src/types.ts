@@ -24,4 +24,5 @@ export interface FormBaseProps<FV extends FieldValues> {
     submitButtonName?: string;
     cancelButtonName?: string;
     buttonsFullWidth?: boolean;
+    isSubmitting?: boolean;
 }

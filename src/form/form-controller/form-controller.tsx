@@ -10,7 +10,7 @@ interface FormControllerProps<FV extends FieldValues> extends FormProviderProps<
     onSubmit: SubmitHandler<FV>;
     disableIsDirty: boolean;
     cancelLink?: string;
-    cancelOnClick?: () => void;
+    onCancelClick?: () => void;
     submitDisabled?: boolean;
     submitButtonName?: string;
     cancelButtonName?: string;
@@ -18,6 +18,7 @@ interface FormControllerProps<FV extends FieldValues> extends FormProviderProps<
     hideCancelButton?: boolean;
     hideActions?: boolean;
     customActions?: React.JSX.Element;
+    isSubmitting?: boolean;
 }
 
 /**
@@ -27,7 +28,7 @@ export const FormController = <FV extends FieldValues = FieldValues>({
     children,
     onSubmit,
     cancelLink = '',
-    cancelOnClick,
+    onCancelClick,
     submitDisabled,
     submitButtonName = 'Сохранить',
     cancelButtonName = 'Отмена',
@@ -36,19 +37,20 @@ export const FormController = <FV extends FieldValues = FieldValues>({
     hideCancelButton = false,
     customActions,
     disableIsDirty,
+    isSubmitting,
     ...formProviderProps
 }: FormControllerProps<FV>): React.JSX.Element => {
     const {
-        formState: {isSubmitting, isDirty, isValid},
+        formState: {isSubmitting: isFormSubmitting, isDirty, isValid},
         handleSubmit,
     } = formProviderProps;
 
     const isDirtyState = disableIsDirty ? false : !isDirty;
 
     const renderCancelButton = () => {
-        if (cancelOnClick) {
+        if (onCancelClick) {
             return (
-                <Button color="secondary" variant="outlined" onClick={cancelOnClick} fullWidth={buttonsFullWidth}>
+                <Button color="secondary" variant="outlined" onClick={onCancelClick} fullWidth={buttonsFullWidth}>
                     {cancelButtonName}
                 </Button>
             );
@@ -80,9 +82,11 @@ export const FormController = <FV extends FieldValues = FieldValues>({
                             <SmartButton
                                 color="primary"
                                 variant="contained"
-                                disabled={submitDisabled || isSubmitting || isDirtyState || !isValid}
+                                disabled={
+                                    submitDisabled || isFormSubmitting || isSubmitting || isDirtyState || !isValid
+                                }
                                 type="submit"
-                                isSubmitting={isSubmitting}
+                                isSubmitting={isFormSubmitting || isSubmitting}
                                 fullWidth={buttonsFullWidth}
                             >
                                 {submitButtonName}

@@ -2,10 +2,12 @@ import {CoreApiClient} from '~/api/base-api';
 import {ENV_CONFIG} from '~/utils/env-config';
 
 import type {
+    ChangePasswordBody,
     GetUserPath,
     GetUsersQuery,
     LoginRequestBody,
     RegistrationRequestBody,
+    UpdateMyProfileBody,
     UpdateUserBody,
     UpdateUserRequest,
 } from './operations';
@@ -39,8 +41,16 @@ class MainApiService extends CoreApiClient {
         return this.get<void, UserDto>(`/v1/users/me`);
     }
 
-    updateMyProfile() {
-        return this.put<void, CreateOrUpdateDto>(`/v1/users/me`);
+    updateMyProfile(body: UpdateMyProfileBody) {
+        return this.put<UpdateMyProfileBody, CreateOrUpdateDto>(`/v1/users/me`, body);
+    }
+
+    changePassword(body: ChangePasswordBody) {
+        return this.post<ChangePasswordBody, CreateOrUpdateDto>(`/v1/users/me`, body);
+    }
+
+    deleteMyProfile() {
+        return this.delete(`/v1/users/me`);
     }
 
     // Users

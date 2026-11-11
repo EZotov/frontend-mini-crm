@@ -3,6 +3,7 @@ import {createGate} from 'effector-react';
 
 import {setInterceptorToken} from '~/api/interceptors/auth';
 import {mainApi} from '~/api/services/main/endpoints';
+import {ChangePasswordBody} from '~/api/services/main/operations';
 import {UserDto} from '~/api/services/main/schemas';
 import {loginFx} from '~/pages/login/models/login';
 import {ROUTE_PATHS} from '~/router/paths';
@@ -15,6 +16,8 @@ export const appAuthGate = createGate();
 // Events
 export const resetAccessToken = createEvent();
 export const logoutEvent = createEvent();
+export const getMyProfileEvent = createEvent();
+export const changePasswordEvent = createEvent<ChangePasswordBody>();
 
 // Effects
 const refreshAuthTokenFx = createApiEffect(() => mainApi.refresh(), {
@@ -24,10 +27,8 @@ const refreshAuthTokenFx = createApiEffect(() => mainApi.refresh(), {
 export const getAppAuthFx = attach({effect: refreshAuthTokenFx});
 export const refreshAuthFx = attach({effect: refreshAuthTokenFx});
 export const getMyProfileFx = createApiEffect<void, UserDto>(() => mainApi.getMyProfile());
-
-const syncTokenWithApiFx = createEffect((token: string | null) => setInterceptorToken(token));
-
 export const logoutFx = createApiEffect(() => mainApi.logout());
+const syncTokenWithApiFx = createEffect((token: string | null) => setInterceptorToken(token));
 
 // Stores
 export const $isAuthCheckingComplete = createStore<boolean>(false).on(getAppAuthFx.finally, () => true);
@@ -83,6 +84,6 @@ sample({
 });
 
 sample({
-    clock: $accessToken,
+    clock: [$accessToken, getMyProfileEvent],
     target: getMyProfileFx,
 });

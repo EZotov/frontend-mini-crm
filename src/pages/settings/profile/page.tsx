@@ -38,7 +38,7 @@ const ProfilePage = (): React.JSX.Element => {
             </Stack>
 
             {modalData.type === PROFILE_MODAL_TYPE.USER_EDIT && (
-                <UserEditModal isOpen={isOpen} onClose={onCloseModal} />
+                <UserEditModal userId="" isOpen={isOpen} onClose={onCloseModal} />
             )}
             {modalData.type === PROFILE_MODAL_TYPE.CHANGE_PASSWORD && (
                 <UserChangePasswordModal isOpen={isOpen} onClose={onCloseModal} />
