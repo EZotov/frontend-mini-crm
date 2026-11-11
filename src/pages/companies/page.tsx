@@ -10,7 +10,7 @@ const items: BaseCardProps[] = [{id: '', title: '', actions: []}];
 const CompaniesPage = (): React.JSX.Element => {
     return (
         <PageLayout pageTitle="Компании" createButtonTitle="Создать компанию" createButtonTo="">
-            <Container isEmptyContent={!companiesCount} isLoading={isCompaniesList}>
+            <Container isEmptyContent={false} isLoading={false}>
                 <List<BaseCardProps>
                     cardComponent={BaseListCard}
                     items={items}
