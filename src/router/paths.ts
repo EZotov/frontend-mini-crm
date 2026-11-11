@@ -3,6 +3,8 @@ export const ROUTE_PATHS = {
     ACTIVITIES_PAGE: '/activities',
     DEALS_PAGE: '/deals',
     COMPANIES_PAGE: '/companies',
+    CREATE_COMPANY_PAGE: '/companies/create',
+    EDIT_COMPANY_PAGE: 'companies/:id/edit',
     USERS_CREATE_PAGE: '/users/create',
     CUSTOMERS_PAGE: '/customers',
     // Reg & Login

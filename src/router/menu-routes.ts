@@ -1,4 +1,6 @@
 import {ROLES} from '~/consts/roles';
+import CreateCompanyPage from '~/pages/companies/create-company/page';
+import EditCompanyPage from '~/pages/companies/edit-company/page';
 import CompaniesPage from '~/pages/companies/page';
 import MainPage from '~/pages/main/page';
 import ProfilePage from '~/pages/settings/profile/page';
@@ -23,21 +25,19 @@ export const routesWithMenu: RouteObjectWithParams[] = [
         Component: UsersPage,
         protected: [ROLES.ADMIN],
     },
+    // Companies
     {
         path: ROUTE_PATHS.COMPANIES_PAGE,
         Component: CompaniesPage,
         protected: true,
     },
-    // {
-    //     path: ROUTE_PATHS.CUSTOMERS_PAGE,
-    //     Component: CustomersPage,
-    // },
-    // {
-    //     path: ROUTE_PATHS.DEALS_PAGE,
-    //     Component: DealsPage,
-    // },
-    // {
-    //     path: ROUTE_PATHS.ACTIVITIES_PAGE,
-    //     Component: ActivitiesPage,
-    // },
+    {
+        path: ROUTE_PATHS.CREATE_COMPANY_PAGE,
+        Component: CreateCompanyPage,
+        protected: true,
+    },
+    {
+        path: ROUTE_PATHS.EDIT_COMPANY_PAGE,
+        Component: EditCompanyPage,
+    },
 ];
