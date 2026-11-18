@@ -3,6 +3,8 @@ import {ENV_CONFIG} from '~/utils/env-config';
 
 import type {
     ChangePasswordBody,
+    CreateCompanyBody,
+    CreateCustomerBody,
     DeleteCompanyPath,
     DeleteCustomerPath,
     GetAllCompaniesQuery,
@@ -98,6 +100,10 @@ class MainApiService extends CoreApiClient {
         return this.get<void, CompanyDto>(`/v1/companies/${id}`);
     }
 
+    createCompany(body: CreateCompanyBody) {
+        return this.put<CreateCompanyBody, CreateOrUpdateDto>(`/v1/companies`, body);
+    }
+
     updateCompany({id, ...body}: UpdateCompanyRequest) {
         return this.put<UpdateCompanyBody, CreateOrUpdateDto>(`/v1/companies/${id}`, body);
     }
@@ -113,6 +119,10 @@ class MainApiService extends CoreApiClient {
 
     getCustomer({id}: GetCustomerPath) {
         return this.get<void, CustomerDto>(`/v1/customers/${id}`);
+    }
+
+    createCustomer(body: CreateCustomerBody) {
+        return this.put<CreateCustomerBody, CreateOrUpdateDto>(`/v1/customers`, body);
     }
 
     updateCustomer({id, ...body}: UpdateCustomerRequest) {

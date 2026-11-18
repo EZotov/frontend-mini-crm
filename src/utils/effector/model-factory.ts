@@ -55,6 +55,7 @@ interface PaginationModelFactoryOptions {
     paginationStoreName?: string;
     setPaginationEventName?: string;
     resetPaginationEventName?: string;
+    defaultPaginationState?: PaginationState;
 }
 
 /**
@@ -65,7 +66,9 @@ export const paginationModelFactory = (options?: PaginationModelFactoryOptions) 
     const resetPaginationEvent = createEvent({name: options?.resetPaginationEventName});
 
     // Общий стейт пагинации
-    const $paginationState = createStore(DEFAULT_PAGINATION, {name: options?.paginationStoreName})
+    const $paginationState = createStore(options?.defaultPaginationState ?? DEFAULT_PAGINATION, {
+        name: options?.paginationStoreName,
+    })
         .on(setPaginationEvent, (state, payload) => ({
             pageNum: payload?.pageNum ? payload.pageNum : state.pageNum,
             pageSize: payload?.pageSize ? payload.pageSize : state.pageSize,
