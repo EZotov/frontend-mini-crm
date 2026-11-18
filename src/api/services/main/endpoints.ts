@@ -3,15 +3,34 @@ import {ENV_CONFIG} from '~/utils/env-config';
 
 import type {
     ChangePasswordBody,
+    DeleteCompanyPath,
+    DeleteCustomerPath,
+    GetAllCompaniesQuery,
+    GetAllCustomersQuery,
+    GetCompanyPath,
+    GetCustomerPath,
     GetUserPath,
     GetUsersQuery,
     LoginRequestBody,
     RegistrationRequestBody,
+    UpdateCompanyBody,
+    UpdateCompanyRequest,
+    UpdateCustomerBody,
+    UpdateCustomerRequest,
     UpdateMyProfileBody,
     UpdateUserBody,
     UpdateUserRequest,
 } from './operations';
-import type {CreateOrUpdateDto, LoginDto, RefreshTokenDto, RegistrationDto, RoleDto, UserDto} from './schemas';
+import type {
+    CompanyDto,
+    CreateOrUpdateDto,
+    CustomerDto,
+    LoginDto,
+    RefreshTokenDto,
+    RegistrationDto,
+    RoleDto,
+    UserDto,
+} from './schemas';
 
 class MainApiService extends CoreApiClient {
     // Auth
@@ -68,6 +87,40 @@ class MainApiService extends CoreApiClient {
 
     deleteUser(id: string) {
         return this.delete(`/v1/users/${id}`);
+    }
+
+    // Company
+    getCompaniesList(query: GetAllCompaniesQuery) {
+        return this.get<GetAllCompaniesQuery, CompanyDto[]>(`/v1/companies`, query);
+    }
+
+    getCompany({id}: GetCompanyPath) {
+        return this.get<void, CompanyDto>(`/v1/companies/${id}`);
+    }
+
+    updateCompany({id, ...body}: UpdateCompanyRequest) {
+        return this.put<UpdateCompanyBody, CreateOrUpdateDto>(`/v1/companies/${id}`, body);
+    }
+
+    deleteCompany({id}: DeleteCompanyPath) {
+        return this.delete(`/v1/companies/${id}`);
+    }
+
+    // Customer
+    getCustomersList(query: GetAllCustomersQuery) {
+        return this.get<GetAllCustomersQuery, CustomerDto[]>(`/v1/customers`, query);
+    }
+
+    getCustomer({id}: GetCustomerPath) {
+        return this.get<void, CustomerDto>(`/v1/customers/${id}`);
+    }
+
+    updateCustomer({id, ...body}: UpdateCustomerRequest) {
+        return this.put<UpdateCustomerBody, CreateOrUpdateDto>(`/v1/customers/${id}`, body);
+    }
+
+    deleteCustomer({id}: DeleteCustomerPath) {
+        return this.delete(`/v1/customers/${id}`);
     }
 }
 

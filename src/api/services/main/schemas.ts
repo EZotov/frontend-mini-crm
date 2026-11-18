@@ -15,3 +15,9 @@ export type RoleDto = components['schemas']['Role'];
 
 // Users
 export type UserDto = components['schemas']['UserDto'];
+
+// Company
+export type CompanyDto = components['schemas']['Company'];
+
+// Customer
+export type CustomerDto = components['schemas']['CustomerDto'];

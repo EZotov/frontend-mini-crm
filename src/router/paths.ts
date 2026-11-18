@@ -5,7 +5,8 @@ export const ROUTE_PATHS = {
     COMPANIES_PAGE: '/companies',
     CREATE_COMPANY_PAGE: '/companies/create',
     EDIT_COMPANY_PAGE: 'companies/:id/edit',
-    USERS_CREATE_PAGE: '/users/create',
+    CREATE_CUSTOMERS_PAGE: '/customers/create',
+    EDIT_CUSTOMERS_PAGE: '/customers/:id/edit',
     CUSTOMERS_PAGE: '/customers',
     // Reg & Login
     LOGIN: '/sign-in',

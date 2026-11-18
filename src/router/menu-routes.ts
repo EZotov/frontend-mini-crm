@@ -2,6 +2,9 @@ import {ROLES} from '~/consts/roles';
 import CreateCompanyPage from '~/pages/companies/create-company/page';
 import EditCompanyPage from '~/pages/companies/edit-company/page';
 import CompaniesPage from '~/pages/companies/page';
+import CreateCustomerPage from '~/pages/customers/create-customer/page';
+import EditCustomerPage from '~/pages/customers/edit-customer/page';
+import CustomersPage from '~/pages/customers/page';
 import MainPage from '~/pages/main/page';
 import ProfilePage from '~/pages/settings/profile/page';
 import UsersPage from '~/pages/settings/users/page';
@@ -39,5 +42,20 @@ export const routesWithMenu: RouteObjectWithParams[] = [
     {
         path: ROUTE_PATHS.EDIT_COMPANY_PAGE,
         Component: EditCompanyPage,
+    },
+    // Customers
+    {
+        path: ROUTE_PATHS.CUSTOMERS_PAGE,
+        Component: CustomersPage,
+        protected: true,
+    },
+    {
+        path: ROUTE_PATHS.CREATE_CUSTOMERS_PAGE,
+        Component: CreateCustomerPage,
+        protected: true,
+    },
+    {
+        path: ROUTE_PATHS.EDIT_CUSTOMERS_PAGE,
+        Component: EditCustomerPage,
     },
 ];
