@@ -5,11 +5,13 @@ export type PaginationState = {
 
 type Params = Record<string, unknown>;
 
-type ParamsType<TParams extends Params> = {
+type ParamsType<TParams extends Params, TQuery extends Params = Params> = {
     params?: TParams;
+    query?: TQuery;
 };
 
 export type GateWithParams<
-    TParams extends Params,
-    TExpandParams extends Params = Record<string, unknown>,
-> = TExpandParams extends Params ? ParamsType<TParams> & TExpandParams : ParamsType<TParams>;
+    TParams extends Params = Params,
+    TQuery extends Params = Params,
+    TExpandParams extends Params = Record<never, never>,
+> = ParamsType<TParams, TQuery> & TExpandParams;
