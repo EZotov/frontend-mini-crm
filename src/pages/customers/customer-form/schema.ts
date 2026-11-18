@@ -7,7 +7,7 @@ export const CustomerFormSchema = zod.object({
     patronymic: zod.string().optional(),
     firstName: zod.string(),
     phone: zod.string(),
-    company: createSelectSchema({isOptional: true}),
+    company: createSelectSchema({isOptional: true, valueType: 'STRING'}),
 });
 
 export type CustomerFormType = zod.infer<typeof CustomerFormSchema>;

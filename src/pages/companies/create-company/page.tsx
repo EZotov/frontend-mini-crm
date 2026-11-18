@@ -1,19 +1,24 @@
+import {useUnit} from 'effector-react';
 import React from 'react';
-import {SubmitHandler} from 'react-hook-form';
 
 import {Container} from '~/components/container';
 import {PageLayout} from '~/components/layout/page-layout';
 import {FORM_ACTION} from '~/form/form-controller';
 
-import {CompanyForm, CompanyFormType} from '../company-form';
+import {CompanyForm} from '../company-form';
+import {$isCompanyCreateSubmitting, createCompanyEvent} from '../models/company';
 
 const CreateCompanyPage = (): React.JSX.Element => {
-    const handleSubmit: SubmitHandler<CompanyFormType> = () => null;
+    const [createCompany, isCompanyCreateSubmitting] = useUnit([createCompanyEvent, $isCompanyCreateSubmitting]);
 
     return (
         <PageLayout pageTitle="Создание новой компании">
-            <Container isEmptyContent={false} isLoading={false}>
-                <CompanyForm action={FORM_ACTION.CREATE} onSubmit={handleSubmit} />
+            <Container>
+                <CompanyForm
+                    action={FORM_ACTION.CREATE}
+                    onSubmit={createCompany}
+                    isSubmitting={isCompanyCreateSubmitting}
+                />
             </Container>
         </PageLayout>
     );
