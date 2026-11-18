@@ -28,7 +28,9 @@ export const UserEditProfileForm = ({
                 <TextFieldController<UserFormType> name="lastName" label="Фамилия" fullWidth />
                 <TextFieldController<UserFormType> name="firstName" label="Имя" fullWidth />
                 <TextFieldController<UserFormType> name="patronymic" label="Отчество" fullWidth />
-                {hasUserId && <TextFieldController<UserFormType> name="role.value" label="Роль" fullWidth />}
+                {hasUserId && (
+                    <TextFieldController<UserFormType> name="role.value" label="ID Роли (временно)" fullWidth />
+                )}
             </Stack>
         </FormController>
     );

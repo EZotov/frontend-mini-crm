@@ -6,10 +6,10 @@ import {Container} from '~/components/container';
 import {PageLayout} from '~/components/layout/page-layout';
 import {Pagination} from '~/components/pagination';
 import {useModal} from '~/hooks/use-modal';
-import {ROUTE_PATHS} from '~/router/paths';
 
 import {UserCard} from './components/user-card';
 import {UserEditModal} from './components/user-edit-modal';
+import {userPageGate} from './models/gate';
 import {
     $isDeleteUserSubmitting,
     $isLoadingUserList,
@@ -17,7 +17,6 @@ import {
     $users,
     $usersCount,
     setPaginationEvent,
-    userPageGate,
 } from './models/users';
 
 // Страница доступна только для админа
@@ -43,11 +42,7 @@ const UsersPage = (): React.JSX.Element => {
     const {onOpenConfirm, confirmModalProps} = useConfirmModal({isSubmitting: isDeleteUserSubmitting});
 
     return (
-        <PageLayout
-            pageTitle="Пользователи системы"
-            createButtonTitle="Создать пользователя"
-            createButtonTo={ROUTE_PATHS.USERS_CREATE_PAGE}
-        >
+        <PageLayout pageTitle="Пользователи системы">
             <Container isEmptyContent={!usersCount} isLoading={isLoadingUserList}>
                 <Stack spacing={3}>
                     {users?.map((user) => (

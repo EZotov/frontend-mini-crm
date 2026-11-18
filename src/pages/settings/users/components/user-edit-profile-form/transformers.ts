@@ -18,9 +18,9 @@ export const userDtoToFormData = (data: UserDto | null, roles?: RoleDto[] | null
         role: data?.role
             ? {
                   value: currentRole?.id ?? '',
-                  label: currentRole?.title,
+                  label: currentRole?.title ?? '',
               }
-            : undefined,
+            : null,
     };
 };
 

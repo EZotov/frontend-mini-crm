@@ -1,17 +1,10 @@
 import {createEvent, createStore, sample} from 'effector';
-import {createGate} from 'effector-react';
 
 import {mainApi} from '~/api/services/main/endpoints';
 import {GetUserPath, GetUsersQuery, UpdateUserRequest} from '~/api/services/main/operations';
 import {UserDto} from '~/api/services/main/schemas';
-import {GateWithParams} from '~/types';
 import {createApiEffect} from '~/utils/effector/api-effect';
 import {paginationModelFactory} from '~/utils/effector/model-factory';
-
-import {getRolesFx} from './roles';
-
-// Gates
-export const userPageGate = createGate<GateWithParams<GetUsersQuery>>();
 
 // Events
 
@@ -42,12 +35,6 @@ export const {$paginationState, setPaginationEvent, resetPaginationEvent} = pagi
 });
 
 // Samples
-sample({
-    clock: userPageGate.open,
-    source: $paginationState,
-    fn: (paginationState) => paginationState,
-    target: [getUsersFx, getRolesFx],
-});
 
 // При изменении пагинации вызываем эффект
 sample({

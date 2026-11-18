@@ -7,7 +7,7 @@ import {useModal} from '~/hooks/use-modal';
 import {UserEditModal} from '../users/components/user-edit-modal';
 import {UserChangePasswordModal} from './components/user-change-password-modal';
 import {PROFILE_MODAL_TYPE} from './consts';
-import {profilePageGate} from './models/profile';
+import {profilePageGate} from './models/gate';
 import {AvatarSection} from './sections/avatar-section';
 import {UserInfoSection} from './sections/user-info-section';
 import {ProfileModalData, ProfileModalHandler} from './types';

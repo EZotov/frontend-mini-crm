@@ -1,7 +1,13 @@
 import zod from 'zod';
 
-export const CompanyFormSchema = zod.object({
-    name: zod.string(),
+import {createSelectSchema} from '~/utils/validation/schemas-factories/select';
+
+export const CustomerFormSchema = zod.object({
+    lastName: zod.string(),
+    patronymic: zod.string().optional(),
+    firstName: zod.string(),
+    phone: zod.string(),
+    company: createSelectSchema({isOptional: true}),
 });
 
-export type CompanyFormType = zod.infer<typeof CompanyFormSchema>;
+export type CustomerFormType = zod.infer<typeof CustomerFormSchema>;
