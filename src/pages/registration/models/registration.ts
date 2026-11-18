@@ -1,17 +1,17 @@
 import {createEvent, sample} from 'effector';
 
 import {mainApi} from '~/api/services/main/endpoints';
-import {RegistrationRequestDto} from '~/api/services/main/operations';
-import {RegistrationResponseDto} from '~/api/services/main/schemas';
+import {RegistrationRequestBody} from '~/api/services/main/operations';
+import {RegistrationDto} from '~/api/services/main/schemas';
 import {internalRedirectFx} from '~/models/redirects';
 import {ROUTE_PATHS} from '~/router/paths';
 import {createApiEffect} from '~/utils/effector/api-effect';
 
 //Events
-export const registrationEvent = createEvent<RegistrationRequestDto>();
+export const registrationEvent = createEvent<RegistrationRequestBody>();
 
 // Effects
-export const registrationFx = createApiEffect<RegistrationRequestDto, RegistrationResponseDto>((payload) =>
+export const registrationFx = createApiEffect<RegistrationRequestBody, RegistrationDto>((payload) =>
     mainApi.signUp(payload),
 );
 
