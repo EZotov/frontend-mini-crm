@@ -1,7 +1,7 @@
 import type {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
 import axios, {isAxiosError} from 'axios';
 
-import {authRequestInterceptor} from '~/api/interceptors/auth';
+import {authRequestInterceptor, refreshAuthInterceptor} from '~/api/interceptors/auth';
 
 import {ApiAxiosError, ApiSuccessResponse} from './types';
 
@@ -80,6 +80,10 @@ export class CoreApiClient extends ApiClient {
         });
 
         this.client.interceptors.request.use(authRequestInterceptor);
+        this.client.interceptors.response.use(
+            (response) => response,
+            (error) => refreshAuthInterceptor(error, this.client),
+        );
     }
 
     private async request<T>(config: AxiosRequestConfig): Promise<ApiSuccessResponse<T>> {

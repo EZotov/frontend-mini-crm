@@ -10,6 +10,7 @@ export const UserEditProfileForm = ({
     onSubmit,
     defaultValues,
     hasUserId,
+    ...props
 }: FormBaseProps<UserFormType> & {hasUserId?: boolean}): React.JSX.Element => {
     const form = useFormController<UserFormType>(UserFormSchema, {
         action: FORM_ACTION.EDIT,
@@ -22,7 +23,7 @@ export const UserEditProfileForm = ({
     });
 
     return (
-        <FormController<UserFormType> {...form} onSubmit={onSubmit} hideCancelButton>
+        <FormController<UserFormType> {...form} {...props} onSubmit={onSubmit} hideCancelButton buttonsFullWidth>
             <Stack direction="column" spacing={1}>
                 <TextFieldController<UserFormType> name="email" label="email" fullWidth />
                 <TextFieldController<UserFormType> name="lastName" label="Фамилия" fullWidth />

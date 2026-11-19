@@ -1,11 +1,12 @@
 import {useGate, useUnit} from 'effector-react';
 import React, {useMemo} from 'react';
+import {generatePath} from 'react-router-dom';
 
 import {ConfirmModal, useConfirmModal} from '~/components/confirm-modal';
 import {Container} from '~/components/container';
 import {PageLayout} from '~/components/layout/page-layout';
 import {List} from '~/components/list';
-import {BaseCardProps, BaseListCard, CardAction} from '~/components/list/base-list-card';
+import {BaseCardProps, BaseListCard} from '~/components/list/base-list-card';
 import {ROUTE_PATHS} from '~/router/paths';
 
 import {
@@ -16,13 +17,6 @@ import {
     deleteCompanyEvent,
 } from './models/company';
 import {companiesPageGate} from './models/gate';
-
-const actions: CardAction[] = [
-    {
-        actionTitle: 'Редактировать',
-        to: ROUTE_PATHS.EDIT_COMPANY_PAGE,
-    },
-];
 
 const CompaniesPage = (): React.JSX.Element => {
     useGate(companiesPageGate);
@@ -44,7 +38,10 @@ const CompaniesPage = (): React.JSX.Element => {
                       id: item.id,
                       title: item.fullTitle,
                       actions: [
-                          ...actions,
+                          {
+                              actionTitle: 'Редактировать',
+                              to: generatePath(ROUTE_PATHS.EDIT_COMPANY_PAGE, {id: item.id}),
+                          },
                           {
                               actionTitle: 'Удалить',
                               onClick: () =>

@@ -5,11 +5,10 @@ import {Link} from 'react-router-dom';
 
 import type {SxMapProps} from '~/styles/types';
 
-import type {BaseCardProps} from './types';
+import type {BaseCardProps, CardAction} from './types';
 
 const styles: SxMapProps<'card'> = {
     card: {
-        px: 2,
         py: 1,
         display: 'flex',
         justifyContent: 'space-between',
@@ -25,6 +24,16 @@ const styles: SxMapProps<'card'> = {
 export const BaseListCard = (props: BaseCardProps): React.JSX.Element => {
     const anchorEl = useRef<HTMLButtonElement>(null);
     const [open, setOpen] = useState<boolean>(false);
+
+    const handleMenuItemClick = (action: CardAction) => {
+        setOpen(false);
+
+        if (!action?.onClick) {
+            return;
+        }
+
+        action.onClick();
+    };
 
     return (
         <Stack component="li" sx={styles.card} direction="row" spacing={1}>
@@ -55,7 +64,10 @@ export const BaseListCard = (props: BaseCardProps): React.JSX.Element => {
                                     {action.actionTitle}
                                 </MenuItem>
                             ) : (
-                                <MenuItem key={`${props.id}-${action.actionTitle}`} onClick={action?.onClick}>
+                                <MenuItem
+                                    key={`${props.id}-${action.actionTitle}`}
+                                    onClick={() => handleMenuItemClick(action)}
+                                >
                                     {action.actionTitle}
                                 </MenuItem>
                             ),

@@ -1,11 +1,12 @@
 import {useGate, useUnit} from 'effector-react';
 import React, {useMemo} from 'react';
+import {generatePath} from 'react-router-dom';
 
 import {ConfirmModal, useConfirmModal} from '~/components/confirm-modal';
 import {Container} from '~/components/container';
 import {PageLayout} from '~/components/layout/page-layout';
 import {List} from '~/components/list';
-import {BaseCardProps, BaseListCard, CardAction} from '~/components/list/base-list-card';
+import {BaseCardProps, BaseListCard} from '~/components/list/base-list-card';
 import {ROUTE_PATHS} from '~/router/paths';
 import {getFullName} from '~/utils/helpers';
 
@@ -17,13 +18,6 @@ import {
     deleteCustomerEvent,
 } from './models/customer';
 import {customersPageGate} from './models/gate';
-
-const actions: CardAction[] = [
-    {
-        actionTitle: 'Редактировать',
-        to: ROUTE_PATHS.EDIT_CUSTOMERS_PAGE,
-    },
-];
 
 const CustomersPage = (): React.JSX.Element => {
     useGate(customersPageGate);
@@ -43,9 +37,12 @@ const CustomersPage = (): React.JSX.Element => {
             customers
                 ? customers.map((item) => ({
                       id: item.id,
-                      title: item.lastName,
+                      title: getFullName(item),
                       actions: [
-                          ...actions,
+                          {
+                              actionTitle: 'Редактировать',
+                              to: generatePath(ROUTE_PATHS.EDIT_CUSTOMERS_PAGE, {id: item.id}),
+                          },
                           {
                               actionTitle: 'Удалить',
                               onClick: () =>

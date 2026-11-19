@@ -10,8 +10,8 @@ const modalStyle: SxProps = {
     bgcolor: '#e9e9e9',
     transform: 'translate(-50%, -50%)',
     outline: 'none',
-    maxWidth: '60vw',
-    minWidth: 420,
+    maxWidth: '70vw',
+    minWidth: 640,
     p: 4,
     borderRadius: 8,
 };

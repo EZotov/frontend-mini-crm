@@ -25,7 +25,7 @@ export const List = <T extends ListItem>({
 
     return (
         <Stack>
-            <Stack component="ul" spacing={spacing}>
+            <Stack component="ul" spacing={spacing} sx={{p: 0}}>
                 {items.map((item) => (
                     <CardComponent key={item.id} {...item} />
                 ))}
