@@ -4,23 +4,24 @@ import {RoleDto, UserDto} from '~/api/services/main/schemas';
 import {UserFormType} from './schema';
 
 export const userDtoToFormData = (data: UserDto | null, roles?: RoleDto[] | null): UserFormType | undefined => {
-    if (!data || !roles) {
+    if (!data) {
         return;
     }
 
-    const currentRole = roles.find(({title}) => title === data.role);
+    const currentRole = roles?.find(({title}) => title === data.role);
 
     return {
         email: data.email,
         lastName: data.lastName,
         firstName: data.firstName,
         patronymic: data?.patronymic ?? '',
-        role: data?.role
-            ? {
-                  value: currentRole?.id ?? '',
-                  label: currentRole?.title ?? '',
-              }
-            : null,
+        role:
+            data?.role && currentRole
+                ? {
+                      value: currentRole?.id ?? '',
+                      label: currentRole?.title ?? '',
+                  }
+                : null,
     };
 };
 

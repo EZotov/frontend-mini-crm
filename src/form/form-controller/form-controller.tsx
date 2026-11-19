@@ -92,7 +92,7 @@ export const FormController = <FV extends FieldValues = FieldValues>({
                                 {submitButtonName}
                             </SmartButton>
 
-                            {!hideCancelButton && renderCancelButton}
+                            {!hideCancelButton && renderCancelButton()}
                         </>
                     )}
 

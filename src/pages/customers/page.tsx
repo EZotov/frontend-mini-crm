@@ -1,4 +1,4 @@
-import {useUnit} from 'effector-react';
+import {useGate, useUnit} from 'effector-react';
 import React, {useMemo} from 'react';
 
 import {ConfirmModal, useConfirmModal} from '~/components/confirm-modal';
@@ -7,8 +7,16 @@ import {PageLayout} from '~/components/layout/page-layout';
 import {List} from '~/components/list';
 import {BaseCardProps, BaseListCard, CardAction} from '~/components/list/base-list-card';
 import {ROUTE_PATHS} from '~/router/paths';
+import {getFullName} from '~/utils/helpers';
 
-import {$customers, $customersCount, $isCustomersListLoading, deleteCustomerEvent} from './models/customer';
+import {
+    $customers,
+    $customersCount,
+    $isCustomersListLoading,
+    $paginationState,
+    deleteCustomerEvent,
+} from './models/customer';
+import {customersPageGate} from './models/gate';
 
 const actions: CardAction[] = [
     {
@@ -18,11 +26,14 @@ const actions: CardAction[] = [
 ];
 
 const CustomersPage = (): React.JSX.Element => {
-    const [customers, isCustomersListLoading, customersCount, deleteCustomer] = useUnit([
+    useGate(customersPageGate);
+
+    const [customers, isCustomersListLoading, customersCount, deleteCustomer, paginationState] = useUnit([
         $customers,
         $isCustomersListLoading,
         $customersCount,
         deleteCustomerEvent,
+        $paginationState,
     ]);
 
     const {onOpenConfirm, confirmModalProps} = useConfirmModal();
@@ -39,7 +50,7 @@ const CustomersPage = (): React.JSX.Element => {
                               actionTitle: 'Удалить',
                               onClick: () =>
                                   onOpenConfirm({
-                                      title: `Вы уверены, что хотите удалить заказчика "${item.lastName}"`,
+                                      title: `Вы уверены, что хотите удалить заказчика "${getFullName(item)}"?`,
                                       onConfirm: () => deleteCustomer({id: item.id}),
                                   }),
                           },
@@ -59,8 +70,8 @@ const CustomersPage = (): React.JSX.Element => {
                 <List<BaseCardProps>
                     cardComponent={BaseListCard}
                     items={items}
-                    paginationState={{pageNum: 1, pageSize: 25}}
-                    totalCount={0}
+                    paginationState={paginationState}
+                    totalCount={customersCount}
                 />
             </Container>
             <ConfirmModal {...confirmModalProps} />

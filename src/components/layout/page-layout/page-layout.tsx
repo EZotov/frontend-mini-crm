@@ -56,6 +56,7 @@ export const PageLayout = ({
         title: createButtonTitle,
         to: createButtonTo,
         onClick: onCreateClick,
+        variant: 'contained',
     });
 
     const isEnabledActions = otherActions ? otherActions.length <= 3 : false;

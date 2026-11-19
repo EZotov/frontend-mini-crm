@@ -6,6 +6,7 @@ import {useParams} from 'react-router-dom';
 import {Container} from '~/components/container';
 import {PageLayout} from '~/components/layout/page-layout';
 import {FORM_ACTION} from '~/form/form-controller';
+import {ROUTE_PATHS} from '~/router/paths';
 
 import {CompanyForm, CompanyFormType} from '../company-form';
 import {$company, $isCompanyLoading, $isCompanyUpdateSubmitting, updateCompanyEvent} from '../models/company';
@@ -45,6 +46,7 @@ const EditCompanyPage = (): React.JSX.Element => {
                     defaultValues={defaultValues}
                     onSubmit={handleSubmit}
                     isSubmitting={isCompanyUpdateSubmitting}
+                    cancelLink={ROUTE_PATHS.COMPANIES_PAGE}
                 />
             </Container>
         </PageLayout>

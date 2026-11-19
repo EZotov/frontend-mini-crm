@@ -1,4 +1,4 @@
-import {useUnit} from 'effector-react';
+import {useGate, useUnit} from 'effector-react';
 import React, {useMemo} from 'react';
 
 import {ConfirmModal, useConfirmModal} from '~/components/confirm-modal';
@@ -8,7 +8,14 @@ import {List} from '~/components/list';
 import {BaseCardProps, BaseListCard, CardAction} from '~/components/list/base-list-card';
 import {ROUTE_PATHS} from '~/router/paths';
 
-import {$companies, $companiesCount, $isCompaniesListLoading, deleteCompanyEvent} from './models/company';
+import {
+    $companies,
+    $companiesCount,
+    $isCompaniesListLoading,
+    $paginationState,
+    deleteCompanyEvent,
+} from './models/company';
+import {companiesPageGate} from './models/gate';
 
 const actions: CardAction[] = [
     {
@@ -18,11 +25,14 @@ const actions: CardAction[] = [
 ];
 
 const CompaniesPage = (): React.JSX.Element => {
-    const [companies, isCompaniesListLoading, companiesCount, deleteCompany] = useUnit([
+    useGate(companiesPageGate);
+
+    const [companies, isCompaniesListLoading, companiesCount, deleteCompany, paginationState] = useUnit([
         $companies,
         $isCompaniesListLoading,
         $companiesCount,
         deleteCompanyEvent,
+        $paginationState,
     ]);
 
     const {onOpenConfirm, confirmModalProps} = useConfirmModal();
@@ -59,8 +69,8 @@ const CompaniesPage = (): React.JSX.Element => {
                 <List<BaseCardProps>
                     cardComponent={BaseListCard}
                     items={items}
-                    paginationState={{pageNum: 1, pageSize: 25}}
-                    totalCount={0}
+                    paginationState={paginationState}
+                    totalCount={companiesCount}
                 />
             </Container>
             <ConfirmModal {...confirmModalProps} />

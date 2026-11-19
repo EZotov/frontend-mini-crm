@@ -1,4 +1,4 @@
-import {Stack} from '@mui/material';
+import {Stack, Typography} from '@mui/material';
 import React from 'react';
 
 import {FORM_ACTION, FormController, useFormController} from '~/form/form-controller';
@@ -11,6 +11,7 @@ export const CustomerForm = ({
     onSubmit,
     defaultValues,
     action = FORM_ACTION.CREATE,
+    ...props
 }: FormBaseProps<CustomerFormType>): React.JSX.Element => {
     const form = useFormController<CustomerFormType>(CustomerFormSchema, {
         action,
@@ -23,7 +24,10 @@ export const CustomerForm = ({
     });
 
     return (
-        <FormController<CustomerFormType> {...form} onSubmit={onSubmit}>
+        <FormController<CustomerFormType> {...form} {...props} onSubmit={onSubmit}>
+            <Typography component="h3" variant="h3" sx={{mb: 3}}>
+                Информация о заказчике
+            </Typography>
             <Stack direction="column" spacing={1}>
                 <TextFieldController<CustomerFormType> name="lastName" label="Фамилия" fullWidth />
                 <TextFieldController<CustomerFormType> name="firstName" label="Имя" fullWidth />

@@ -1,5 +1,7 @@
-import {Box, Container, Modal as MuiModal, Stack, SxProps, Typography} from '@mui/material';
+import {Box, Modal as MuiModal, Stack, SxProps, Typography} from '@mui/material';
 import React from 'react';
+
+import {Container} from '../container';
 
 const modalStyle: SxProps = {
     position: 'absolute',
@@ -21,6 +23,7 @@ interface ModalBaseProps {
     children: React.ReactNode;
     headlineFontSize?: number;
     contentBoxSx?: SxProps;
+    modalSx?: SxProps;
 }
 
 interface ModalCommonProps extends ModalBaseProps {
@@ -41,6 +44,7 @@ export const Modal = ({
     children,
     headlineFontSize = 20,
     contentBoxSx,
+    modalSx,
     ...props
 }: ModalProps): React.JSX.Element => {
     const baseRender = (
@@ -71,7 +75,9 @@ export const Modal = ({
 
     return (
         <MuiModal open={isOpen} onClose={onClose}>
-            <Container sx={modalStyle}>{props.type === 'FORM_MODAL' ? formModalRender : baseRender}</Container>
+            <Container sx={{...modalStyle, ...modalSx}}>
+                {props.type === 'FORM_MODAL' ? formModalRender : baseRender}
+            </Container>
         </MuiModal>
     );
 };

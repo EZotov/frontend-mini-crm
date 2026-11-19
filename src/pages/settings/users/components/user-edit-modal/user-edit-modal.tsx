@@ -6,7 +6,7 @@ import {Modal} from '~/components/modal';
 import {$isMyProfileLoading, $myProfile, getMyProfileEvent} from '~/models/auth';
 import {$isUpdateMyProfileSubmitting, updateMyProfileEvent} from '~/pages/settings/profile/models/profile';
 
-import {$roles} from '../../models/roles';
+import {$isRolesLoading, $roles, getRolesEvent} from '../../models/roles';
 import {$isLoadingUser, $isUpdateUserSubmitting, $user, getUserEvent, updateUserEvent} from '../../models/users';
 import {formDataToUserPayload, userDtoToFormData, UserEditProfileForm, UserFormType} from '../user-edit-profile-form';
 
@@ -23,6 +23,8 @@ export const UserEditModal = ({userId, isOpen, onClose}: UserEditModalProps): Re
         updateUser,
         isUpdateUserSubmitting,
         roles,
+        isRolesLoading,
+        getRoles,
         getUser,
         myProfile,
         isMyProfileLoading,
@@ -35,6 +37,8 @@ export const UserEditModal = ({userId, isOpen, onClose}: UserEditModalProps): Re
         updateUserEvent,
         $isUpdateUserSubmitting,
         $roles,
+        $isRolesLoading,
+        getRolesEvent,
         getUserEvent,
         $myProfile,
         $isMyProfileLoading,
@@ -43,7 +47,10 @@ export const UserEditModal = ({userId, isOpen, onClose}: UserEditModalProps): Re
         $isUpdateMyProfileSubmitting,
     ]);
 
-    const defaultValues = useMemo(() => userDtoToFormData(!userId ? myProfile : user, roles), [user, roles]);
+    const defaultValues = useMemo(
+        () => userDtoToFormData(!userId ? myProfile : user, !userId ? null : roles),
+        [myProfile, user, roles],
+    );
 
     const handleSubmit: SubmitHandler<UserFormType> = (data) => {
         const userData = formDataToUserPayload(data);
@@ -64,6 +71,7 @@ export const UserEditModal = ({userId, isOpen, onClose}: UserEditModalProps): Re
             return;
         }
 
+        getRoles();
         getUser(userId);
     }, [isOpen]);
 
@@ -73,7 +81,7 @@ export const UserEditModal = ({userId, isOpen, onClose}: UserEditModalProps): Re
             onClose={onClose}
             title="Редактировать пользователя"
             type="FORM_MODAL"
-            isLoading={isMyProfileLoading || isLoadingUser}
+            isLoading={isRolesLoading || isMyProfileLoading || isLoadingUser}
         >
             <UserEditProfileForm
                 hasUserId={!!userId}

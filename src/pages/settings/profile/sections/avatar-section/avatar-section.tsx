@@ -21,7 +21,7 @@ export const AvatarSection = (): React.JSX.Element => {
                 <Container isTransparent isLoading={isAvatarLoading}>
                     <Box
                         component="img"
-                        src=""
+                        src="https://"
                         sx={{width: '100%', height: 300}}
                         onLoad={() => setIsAvatarLoading(false)}
                         onLoadStart={() => setIsAvatarLoading(true)}

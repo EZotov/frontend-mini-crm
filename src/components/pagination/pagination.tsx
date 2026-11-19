@@ -40,8 +40,8 @@ export const Pagination = ({paginationState, totalCount, onChange}: PaginationPr
     };
 
     return (
-        <Stack direction="row" spacing={2} sx={{mt: 2}}>
-            <Select value={paginationState.pageSize} onChange={handleChangeSize}>
+        <Stack direction="row" spacing={2} sx={{mt: 2, display: 'flex', alignItems: 'center'}}>
+            <Select value={paginationState.pageSize} onChange={handleChangeSize} sx={{fontSize: 16}}>
                 <MenuItem value={25}>25</MenuItem>
                 <MenuItem value={50}>50</MenuItem>
                 <MenuItem value={100}>100</MenuItem>

@@ -509,7 +509,7 @@ export interface components {
             /** Format: uuid */
             id: string;
             lastName: string;
-            patronymic: Record<string, never> | null;
+            patronymic: string | null;
             firstName: string;
             phone: string;
             company: components["schemas"]["Company"];

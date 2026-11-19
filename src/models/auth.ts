@@ -57,7 +57,7 @@ sample({
 // Отслеживаем только запросы с невалидным accessToken
 sample({
     clock: authErrorEvent,
-    filter: (error) => error.code === 'JWT_EXPIRED' || error.code === 'JWT_INVALID',
+    // filter: (error) => error.code === 'JWT_EXPIRED' || error.code === 'JWT_INVALID',
     target: refreshAuthFx,
 });
 

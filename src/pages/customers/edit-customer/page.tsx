@@ -6,6 +6,7 @@ import {useParams} from 'react-router-dom';
 import {Container} from '~/components/container';
 import {PageLayout} from '~/components/layout/page-layout';
 import {FORM_ACTION} from '~/form/form-controller';
+import {ROUTE_PATHS} from '~/router/paths';
 
 import {CustomerForm, CustomerFormType} from '../customer-form';
 import {$customer, $isCustomerLoading, $isCustomerUpdateSubmitting, updateCustomerEvent} from '../models/customer';
@@ -33,8 +34,7 @@ const EditCustomerPage = (): React.JSX.Element => {
                       label: customer.company.fullTitle,
                   }
                 : null,
-            // Проблема с типом - исправить
-            patronymic: (customer?.patronymic as unknown as string) ?? '',
+            patronymic: customer?.patronymic ?? '',
         }),
         [customer],
     );
@@ -57,6 +57,7 @@ const EditCustomerPage = (): React.JSX.Element => {
                     defaultValues={defaultValues}
                     onSubmit={handleSubmit}
                     isSubmitting={isCustomerUpdateSubmitting}
+                    cancelLink={ROUTE_PATHS.CUSTOMERS_PAGE}
                 />
             </Container>
         </PageLayout>

@@ -13,6 +13,7 @@ export const ConfirmModal = ({isOpen, modalData, onCloseModal, isSubmitting}: Co
             onClose={onCloseModal}
             type="BASE"
             title={modalData?.title ?? 'Подтвердите ваше действие'}
+            modalSx={{maxWidth: '640px !important'}}
         >
             <Container isTransparent sx={{p: 0, mt: 2}}>
                 {modalData.description && <Typography>{modalData.description}</Typography>}

@@ -5,19 +5,18 @@ export const onErrorUserAvatarHandler = (event: React.SyntheticEvent<HTMLImageEl
     event.currentTarget.src = UserPlaceholder;
 };
 
-export const getFullName = (data: {
-    lastName?: string | null;
-    firstName?: string | null;
-    patronymic?: string | null;
-}) => {
-    let result = '';
+const NAME_KEYS = ['lastName', 'firstName', 'patronymic'] as const;
 
-    for (const key in data) {
-        const value = data[key as keyof typeof data]?.trim();
-        if (value) {
-            result += (result ? ' ' : '') + value;
+export const getFullName = (data: Record<string, unknown>): string => {
+    let fullName = '';
+
+    for (const key of NAME_KEYS) {
+        const value = data[key];
+
+        if (typeof value === 'string' && value.trim()) {
+            fullName += fullName ? ` ${value.trim()}` : value.trim();
         }
     }
 
-    return result;
+    return fullName;
 };
